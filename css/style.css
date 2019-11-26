@@ -1174,6 +1174,9 @@ a.article-title-home:hover {
   text-shadow: none;
   padding: 0;
 }
+.article-entry .highlight {
+  margin: 0;
+}
 .article-entry .highlight pre {
   border: none;
   margin: 0;
