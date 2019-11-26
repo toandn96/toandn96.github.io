@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -51,116 +52,8 @@
   </div> -->
 <!-- </header> -->
       <div class="outer">
-        <section id="main"><article id="post-Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart" class="article article-type-post" itemscope
-  itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/26/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart/" class="article-date">
-  <time datetime="2019-11-26T04:22:02.000Z" itemprop="datePublished">2019-11-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Dart/">Dart</a>,<a class="article-category-link" href="/categories/Dart/Flutter/">Flutter</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      
-      
-  
-    <h1 class="article-title" itemprop="name">
-      Những điểm đánh dấu khi tìm hiểu về Dart
-    </h1>
-  
-
-      
-    </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p>Mình cùng với ông anh chơi chung nó cùng chạy đua một thử thách xem ai học Flutter nhanh nhất. Sau đây là thành quả sau ba đêm cuối tuần cày Dart lang là ngôn ngữ được sử dụng trong Flutter. Để đọc hiểu bài này, bạn cần phải có kinh nghiệm code một hoặc vài ngôn ngữ lập trình trước đó. Bài viết không phải bài hướng dẫn mà chỉ là phần note lại các điểm được mình cho là quan trọng sau khi đọc docs của Dart. Những phần không quan trọng mặc định bỏ qua.</p>
-<h3 id="Trong-Dart-moi-thu-deu-la-object"><a href="#Trong-Dart-moi-thu-deu-la-object" class="headerlink" title="Trong Dart mọi thứ đều là object"></a>Trong Dart mọi thứ đều là object</h3><p>Trong Dart mọi thứ đều là object. Đã là Object thì luôn phải là instance của một class nào đó. Chính vì tất cả đều là object nên dù là số, chữ hay bất kể loại kiểu dữ liệu nào thì <code>giá trị mặc định của nó đều là null</code>. Nhờ vậy, mọi biến số trong Dart đều là <code>reference type</code>. Cũng chính thế mà Dart có một loại biến <code>dynamic</code> chấp nhận mọi kiểu dữ liệu.</p>
-<p>Non-dynamic data type</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main () &#123;</span><br><span class="line">  <span class="built_in">var</span> x = <span class="number">1</span>;</span><br><span class="line">  x = <span class="number">1.5</span>;  // Err<span class="symbol">or:</span> A <span class="built_in">value</span> of <span class="built_in">type</span> 'double' can'<span class="built_in">t</span> be assigned to a variable of <span class="built_in">type</span> '<span class="built_in">int</span>'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Dynamic data type</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">main</span> () &#123;</span><br><span class="line">  <span class="attribute">dynamic</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">x</span> = <span class="number">1</span>.<span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Toan-tu-Null-aware"><a href="#Toan-tu-Null-aware" class="headerlink" title="Toán tử Null-aware"></a>Toán tử Null-aware</h3><p>Vì giá trị mặc định của mọi thứ trong Dart đều là null. Điều này đi ngược lại xu thế phát triển của xã hội. Chính vì vậy mà Dart có một loạt toán tử Null-aware để đảm bảo null safe trong quá trình thực thi code.</p>
-<p>Ví dụ về Null-aware</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  print(<span class="keyword">null</span> ?? 'Trả về chính nó nếu khá<span class="keyword">c</span> <span class="keyword">null</span> hoặ<span class="keyword">c</span> trả về dòng này')<span class="comment">;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  var x = null;</span></span><br><span class="line"><span class="comment">  x ??= 'Syntax sugar của `x = x ?? "Viết gì vào đây bây giờ"`';</span></span><br><span class="line"><span class="comment">  print(x);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  var isNull = null;</span></span><br><span class="line"><span class="comment">  print(isNull?.foo()); // Nếu null thì không thực hiện foo() nữa mà trả về `null`</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>Một trong những lưu ý có liên quan đó là mọi hàm trong Dart đều trả về dữ liệu. <code>Mặc định trả về của một hàm cũng là null</code>.</p>
-<h3 id="Co-nam-cach-de-danh-dau-khai-bao-mot-bien-hang-so-trong-Dart"><a href="#Co-nam-cach-de-danh-dau-khai-bao-mot-bien-hang-so-trong-Dart" class="headerlink" title="Có năm cách để đánh dấu khai báo một biến/hằng số trong Dart"></a>Có năm cách để đánh dấu khai báo một biến/hằng số trong Dart</h3><ul>
-<li>Cách đầu tiên là đặt kiểu dữ liệu trước tên biến. Biến sẽ chỉ được khai báo một lần và tất cả mọi lần thay đổi dữ liệu biến đều phải giữ nguyên kiểu dữ liệu cũ.</li>
-<li>Sử dụng <code>var</code> giúp cho biến dù được khai báo một lần và không thể thay đổi kiểu dữ liệu. Tuy nhiên sau lần nhận dữ liệu đầu tiên, biến mới được xác định kiểu dữ liệu của bản thân.</li>
-<li>Sử dụng <code>dynamic</code> giúp cho biến dù được khai báo một lần nhưng muốn thay đổi dữ liệu và kiểu dữ liệu bao nhiêu lần cũng được.</li>
-<li><code>final</code> và <code>const</code> là hai từ khóa dễ nhầm cần được nói riêng.</li>
-</ul>
-<p>Một biến được khai báo là <code>final</code> sẽ trở thành hằng số chỉ có thể được truyền dữ liệu một lần. Tuy nhiên dữ liệu vẫn có thể tự thay đổi các giá trị thuộc tính bên trong nó.</p>
-<p>Ví dụ về final</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A <span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  var a = 'dummy';</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"></span><br><span class="line">main() <span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  final a = A();</span></span><br><span class="line"><span class="comment">  assert(a.a == 'dummy');</span></span><br><span class="line"><span class="comment">  a.a = 'new';</span></span><br><span class="line"><span class="comment">  assert(a.a == 'new');</span></span><br><span class="line"><span class="comment">  a = A();  // Error: 'a', a final variable, can only be set once</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>Một biến được khai báo là <code>const</code> sẽ trở thành hằng số được build thành các <code>literal</code> tại thời điểm <code>compile time</code>. Điều này nghĩa là toàn bộ dữ liệu được truyền vào đều bị <code>đóng băng và không thể thay đổi</code>. Và vì được build vào thời điểm <code>compile time</code> dẫn đến phần tử của object thì không thể là <code>const</code> được. Một biến muốn được khai báo là <code>const</code> thì buộc phải <code>static</code> hoặc là <code>top-level variable</code>.</p>
-<p>Ngoài ra, <code>const</code> cũng có thể được dùng cho việc khai báo cho khối dữ liệu truyền vào. Lí do thì nó rất là buồn cười, để tôi chỉ các bạn thấy.</p>
-<p>Ví dụ về const</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="keyword">const</span> [];  <span class="comment">// (1) a có thể được đổi thành giá trị khác ngoài một list rỗng ([])</span></span><br><span class="line">  <span class="keyword">final</span> b = <span class="keyword">const</span> [];  <span class="comment">// (2) b chính là const chứ còn gì nữa</span></span><br><span class="line">  <span class="keyword">const</span> c = <span class="keyword">const</span> [];  <span class="comment">// (3) c được khuyến cáo là viết thừa</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Trường hợp (2) chính là lí do. Vì một phần tử của object không thể là <code>const</code> vì lí do tại thời điểm <code>compile time</code> thì nó chưa tồn tại. Vậy cách để thực hiện việc này là tạo ra một khối dữ liệu <code>const</code> được build tại thời điểm <code>compile time</code> là list rỗng ([]). Đến lúc xuất hiện object thì ta đặt phần tử mong muốn thành final, truyền cho nó khối dữ liệu ([]) và a lê hấp nó đã biến thành một phần tử <code>const</code>.</p>
-<h3 id="Dart-ho-tro-UTF-32"><a href="#Dart-ho-tro-UTF-32" class="headerlink" title="Dart hỗ trợ UTF-32"></a>Dart hỗ trợ UTF-32</h3><p>Vì mặc định một kí tự Unicode được biểu diễn như regex sau: <code>\\u[0-9a-f]{4}</code> ví dụ <code>\u09af</code>. Điều này cho thấy là một kí tự chỉ biểu diễn được tối đa là 4 kí tự hex có tổng là 16 bits. Vậy để biểu diễn được UTF-32, Dart đưa ra một cú pháp được gọi là Runes có các biểu diễn như regex sau: <code>\\u\{[0-9a-f]{1, 8}\}</code> ví dụ <code>\u09af</code>, <code>\u09</code>, <code>\u09affa90</code></p>
-<h3 id="Dart-ho-tro-da-ke-thua"><a href="#Dart-ho-tro-da-ke-thua" class="headerlink" title="Dart hỗ trợ đa kế thừa"></a>Dart hỗ trợ đa kế thừa</h3><p>Về mặt cú pháp thì Dart vẫn chỉ có một kế thừa duy nhất, tuy nhiên Dart lại hỗ trợ kĩ thuật mixins thông qua từ khóa with. Việc này dẫn đến <code>diamon problem</code> là việc khi kế thừa lại có ít nhất hai supper class có ít nhất một method cùng tên và cùng danh sách tham số truyền vào. Điều này gây ra là ở phía sub-class khi gọi đến method đó thì không biết chọn cái nào. Với Dart, câu trả lời là của supper class cuối cùng được khai báo. Vậy điểm lưu ý là <code>thứ tự khai báo rất quan trọng trong Dart</code>.</p>
-<h3 id="Dart-khong-co-accept-modifier"><a href="#Dart-khong-co-accept-modifier" class="headerlink" title="Dart không có accept modifier"></a>Dart không có accept modifier</h3><p>Trong Dart thì cùng một <code>file.Dart</code> với nhau thì mọi thứ là public. Còn với những tài nguyên thuộc về <code>file.Dart</code> khác. Tên biến có bắt đầu bởi kí tự <code>_</code> thì được coi là private ở mức độ packages/files/libraries.</p>
-<p>Vậy nếu không có private, làm sao triển khai được singleton? Dart lại sinh ra một keyword gọi là <code>factory</code>. Với factory ta sẽ triển khai được một singleton như sau:</p>
-<p>Giới thiệu về singleton trong Dart</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Singleton &#123;</span><br><span class="line">  static final Singleton _singleton = <span class="keyword">new</span> <span class="module-access"><span class="module"><span class="identifier">Singleton</span>.</span><span class="module"><span class="identifier">_internal</span>(</span></span>);</span><br><span class="line"></span><br><span class="line">  factory <span class="constructor">Singleton()</span> &#123;</span><br><span class="line">    return _singleton;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Singleton</span>.</span><span class="module"><span class="identifier">_internal</span>(</span></span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main<span class="literal">()</span> &#123;</span><br><span class="line">  var s1 = <span class="keyword">new</span> <span class="constructor">Singleton()</span>;</span><br><span class="line">  var s2 = <span class="keyword">new</span> <span class="constructor">Singleton()</span>;</span><br><span class="line">  <span class="keyword">assert</span>(identical(s1, s2));</span><br><span class="line">  <span class="keyword">assert</span>(s1<span class="operator"> == </span>s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Tham-so-dang-positional-va-named-trong-Dart"><a href="#Tham-so-dang-positional-va-named-trong-Dart" class="headerlink" title="Tham số dạng positional và named trong Dart"></a>Tham số dạng positional và named trong Dart</h3><p>Dart đưa ra hai khái niệm là <code>positional</code> và <code>named</code> tham số. Hai khái niệm này khác nhau ở điểm. <code>positional</code> cho phép ta đặt giá trị mặc định hoặc không (mặc định là null) cho tham số truyền vào. Từ đó, ta có thể thêm bớt số lượng tham số trong lời gọi hàm. Ràng buộc của <code>positional</code> là vị trí khai báo phải nằm cuối cùng trong phần khai báo. Danh sách <code>positional</code> trong lời gọi hàm không được thay đổi thứ tự.</p>
-<p>Ví dụ về positional</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getNumber(<span class="built_in">String</span> one, <span class="built_in">String</span> two, [<span class="built_in">int</span> three, <span class="built_in">String</span> four]) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'<span class="subst">$one</span>, <span class="subst">$two</span>, <span class="subst">$three</span>, <span class="subst">$four</span>'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>) == <span class="string">'1, 2, null, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="number">3</span>) == <span class="string">'1, 2, 3, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="number">3</span>, <span class="string">'4'</span>) == <span class="string">'1, 2, 3, 4'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>named</code> thì linh hoạt hơn khi chấp nhận không theo thứ tự khi gọi hàm miễn là thỏa mãn việc tên tham số được chỉ rõ. Lưu ý là <code>không thể có cả positional lẫn named trong cùng một method</code>.</p>
-<p>Ví dụ về named</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getNumber(<span class="built_in">String</span> one, <span class="built_in">String</span> two, &#123;<span class="built_in">int</span> three, <span class="built_in">String</span> four&#125;) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'<span class="subst">$one</span>, <span class="subst">$two</span>, <span class="subst">$three</span>, <span class="subst">$four</span>'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>) == <span class="string">'1, 2, null, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, three: <span class="number">3</span>) == <span class="string">'1, 2, 3, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, four: <span class="string">'4'</span>) == <span class="string">'1, 2, null, 4'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Nguồn : <a href="https://kipalog.com/posts/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart" target="_blank" rel="noopener">https://kipalog.com/posts/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart</a></p>
-
-      
-      
-    </div>
-    
-
-    <!-- <footer class="article-footer">
-      <a data-url="toandn96.github.io/2019/11/26/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart/" data-id="ck3fj63a5000dl0j2gy300ldt" class="article-share-link">Share</a>
-      
-      
-    </footer> -->
-  </div>
-  <!-- 
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/26/Hoc-Regex-co-ban/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
         
-          Học Regex cơ bản
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-   -->
-</article>
-
-</section>
-        
-          <aside style="position: relative;" id="sidebar" >
+        <aside style="position: relative;" id="sidebar" >
   <div style="display: flex;justify-content: center;align-items: center;height: 100px;">
     <div id="header-home">
       <picture>
@@ -256,6 +149,114 @@
 
 </aside>
         
+        <section id="main"><article id="post-Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart" class="article article-type-post" itemscope
+  itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart/" class="article-date">
+  <time datetime="2019-11-26T04:22:02.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Dart/">Dart</a>,<a class="article-category-link" href="/categories/Dart/Flutter/">Flutter</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Những điểm đánh dấu khi tìm hiểu về Dart
+    </h1>
+  
+
+      
+    </header>
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p>Mình cùng với ông anh chơi chung nó cùng chạy đua một thử thách xem ai học Flutter nhanh nhất. Sau đây là thành quả sau ba đêm cuối tuần cày Dart lang là ngôn ngữ được sử dụng trong Flutter. Để đọc hiểu bài này, bạn cần phải có kinh nghiệm code một hoặc vài ngôn ngữ lập trình trước đó. Bài viết không phải bài hướng dẫn mà chỉ là phần note lại các điểm được mình cho là quan trọng sau khi đọc docs của Dart. Những phần không quan trọng mặc định bỏ qua.</p>
+<h3 id="Trong-Dart-moi-thu-deu-la-object"><a href="#Trong-Dart-moi-thu-deu-la-object" class="headerlink" title="Trong Dart mọi thứ đều là object"></a>Trong Dart mọi thứ đều là object</h3><p>Trong Dart mọi thứ đều là object. Đã là Object thì luôn phải là instance của một class nào đó. Chính vì tất cả đều là object nên dù là số, chữ hay bất kể loại kiểu dữ liệu nào thì <code>giá trị mặc định của nó đều là null</code>. Nhờ vậy, mọi biến số trong Dart đều là <code>reference type</code>. Cũng chính thế mà Dart có một loại biến <code>dynamic</code> chấp nhận mọi kiểu dữ liệu.</p>
+<p>Non-dynamic data type</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main () &#123;</span><br><span class="line">  <span class="built_in">var</span> x = <span class="number">1</span>;</span><br><span class="line">  x = <span class="number">1.5</span>;  // Err<span class="symbol">or:</span> A <span class="built_in">value</span> of <span class="built_in">type</span> 'double' can'<span class="built_in">t</span> be assigned to a variable of <span class="built_in">type</span> '<span class="built_in">int</span>'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Dynamic data type</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">main</span> () &#123;</span><br><span class="line">  <span class="attribute">dynamic</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">x</span> = <span class="number">1</span>.<span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Toan-tu-Null-aware"><a href="#Toan-tu-Null-aware" class="headerlink" title="Toán tử Null-aware"></a>Toán tử Null-aware</h3><p>Vì giá trị mặc định của mọi thứ trong Dart đều là null. Điều này đi ngược lại xu thế phát triển của xã hội. Chính vì vậy mà Dart có một loạt toán tử Null-aware để đảm bảo null safe trong quá trình thực thi code.</p>
+<p>Ví dụ về Null-aware</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  print(<span class="keyword">null</span> ?? 'Trả về chính nó nếu khá<span class="keyword">c</span> <span class="keyword">null</span> hoặ<span class="keyword">c</span> trả về dòng này')<span class="comment">;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  var x = null;</span></span><br><span class="line"><span class="comment">  x ??= 'Syntax sugar của `x = x ?? "Viết gì vào đây bây giờ"`';</span></span><br><span class="line"><span class="comment">  print(x);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  var isNull = null;</span></span><br><span class="line"><span class="comment">  print(isNull?.foo()); // Nếu null thì không thực hiện foo() nữa mà trả về `null`</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Một trong những lưu ý có liên quan đó là mọi hàm trong Dart đều trả về dữ liệu. <code>Mặc định trả về của một hàm cũng là null</code>.</p>
+<h3 id="Co-nam-cach-de-danh-dau-khai-bao-mot-bien-hang-so-trong-Dart"><a href="#Co-nam-cach-de-danh-dau-khai-bao-mot-bien-hang-so-trong-Dart" class="headerlink" title="Có năm cách để đánh dấu khai báo một biến/hằng số trong Dart"></a>Có năm cách để đánh dấu khai báo một biến/hằng số trong Dart</h3><ul>
+<li>Cách đầu tiên là đặt kiểu dữ liệu trước tên biến. Biến sẽ chỉ được khai báo một lần và tất cả mọi lần thay đổi dữ liệu biến đều phải giữ nguyên kiểu dữ liệu cũ.</li>
+<li>Sử dụng <code>var</code> giúp cho biến dù được khai báo một lần và không thể thay đổi kiểu dữ liệu. Tuy nhiên sau lần nhận dữ liệu đầu tiên, biến mới được xác định kiểu dữ liệu của bản thân.</li>
+<li>Sử dụng <code>dynamic</code> giúp cho biến dù được khai báo một lần nhưng muốn thay đổi dữ liệu và kiểu dữ liệu bao nhiêu lần cũng được.</li>
+<li><code>final</code> và <code>const</code> là hai từ khóa dễ nhầm cần được nói riêng.</li>
+</ul>
+<p>Một biến được khai báo là <code>final</code> sẽ trở thành hằng số chỉ có thể được truyền dữ liệu một lần. Tuy nhiên dữ liệu vẫn có thể tự thay đổi các giá trị thuộc tính bên trong nó.</p>
+<p>Ví dụ về final</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A <span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  var a = 'dummy';</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"></span><br><span class="line">main() <span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  final a = A();</span></span><br><span class="line"><span class="comment">  assert(a.a == 'dummy');</span></span><br><span class="line"><span class="comment">  a.a = 'new';</span></span><br><span class="line"><span class="comment">  assert(a.a == 'new');</span></span><br><span class="line"><span class="comment">  a = A();  // Error: 'a', a final variable, can only be set once</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Một biến được khai báo là <code>const</code> sẽ trở thành hằng số được build thành các <code>literal</code> tại thời điểm <code>compile time</code>. Điều này nghĩa là toàn bộ dữ liệu được truyền vào đều bị <code>đóng băng và không thể thay đổi</code>. Và vì được build vào thời điểm <code>compile time</code> dẫn đến phần tử của object thì không thể là <code>const</code> được. Một biến muốn được khai báo là <code>const</code> thì buộc phải <code>static</code> hoặc là <code>top-level variable</code>.</p>
+<p>Ngoài ra, <code>const</code> cũng có thể được dùng cho việc khai báo cho khối dữ liệu truyền vào. Lí do thì nó rất là buồn cười, để tôi chỉ các bạn thấy.</p>
+<p>Ví dụ về const</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="keyword">const</span> [];  <span class="comment">// (1) a có thể được đổi thành giá trị khác ngoài một list rỗng ([])</span></span><br><span class="line">  <span class="keyword">final</span> b = <span class="keyword">const</span> [];  <span class="comment">// (2) b chính là const chứ còn gì nữa</span></span><br><span class="line">  <span class="keyword">const</span> c = <span class="keyword">const</span> [];  <span class="comment">// (3) c được khuyến cáo là viết thừa</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Trường hợp (2) chính là lí do. Vì một phần tử của object không thể là <code>const</code> vì lí do tại thời điểm <code>compile time</code> thì nó chưa tồn tại. Vậy cách để thực hiện việc này là tạo ra một khối dữ liệu <code>const</code> được build tại thời điểm <code>compile time</code> là list rỗng ([]). Đến lúc xuất hiện object thì ta đặt phần tử mong muốn thành final, truyền cho nó khối dữ liệu ([]) và a lê hấp nó đã biến thành một phần tử <code>const</code>.</p>
+<h3 id="Dart-ho-tro-UTF-32"><a href="#Dart-ho-tro-UTF-32" class="headerlink" title="Dart hỗ trợ UTF-32"></a>Dart hỗ trợ UTF-32</h3><p>Vì mặc định một kí tự Unicode được biểu diễn như regex sau: <code>\\u[0-9a-f]{4}</code> ví dụ <code>\u09af</code>. Điều này cho thấy là một kí tự chỉ biểu diễn được tối đa là 4 kí tự hex có tổng là 16 bits. Vậy để biểu diễn được UTF-32, Dart đưa ra một cú pháp được gọi là Runes có các biểu diễn như regex sau: <code>\\u\{[0-9a-f]{1, 8}\}</code> ví dụ <code>\u09af</code>, <code>\u09</code>, <code>\u09affa90</code></p>
+<h3 id="Dart-ho-tro-da-ke-thua"><a href="#Dart-ho-tro-da-ke-thua" class="headerlink" title="Dart hỗ trợ đa kế thừa"></a>Dart hỗ trợ đa kế thừa</h3><p>Về mặt cú pháp thì Dart vẫn chỉ có một kế thừa duy nhất, tuy nhiên Dart lại hỗ trợ kĩ thuật mixins thông qua từ khóa with. Việc này dẫn đến <code>diamon problem</code> là việc khi kế thừa lại có ít nhất hai supper class có ít nhất một method cùng tên và cùng danh sách tham số truyền vào. Điều này gây ra là ở phía sub-class khi gọi đến method đó thì không biết chọn cái nào. Với Dart, câu trả lời là của supper class cuối cùng được khai báo. Vậy điểm lưu ý là <code>thứ tự khai báo rất quan trọng trong Dart</code>.</p>
+<h3 id="Dart-khong-co-accept-modifier"><a href="#Dart-khong-co-accept-modifier" class="headerlink" title="Dart không có accept modifier"></a>Dart không có accept modifier</h3><p>Trong Dart thì cùng một <code>file.Dart</code> với nhau thì mọi thứ là public. Còn với những tài nguyên thuộc về <code>file.Dart</code> khác. Tên biến có bắt đầu bởi kí tự <code>_</code> thì được coi là private ở mức độ packages/files/libraries.</p>
+<p>Vậy nếu không có private, làm sao triển khai được singleton? Dart lại sinh ra một keyword gọi là <code>factory</code>. Với factory ta sẽ triển khai được một singleton như sau:</p>
+<p>Giới thiệu về singleton trong Dart</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Singleton &#123;</span><br><span class="line">  static final Singleton _singleton = <span class="keyword">new</span> <span class="module-access"><span class="module"><span class="identifier">Singleton</span>.</span><span class="module"><span class="identifier">_internal</span>(</span></span>);</span><br><span class="line"></span><br><span class="line">  factory <span class="constructor">Singleton()</span> &#123;</span><br><span class="line">    return _singleton;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Singleton</span>.</span><span class="module"><span class="identifier">_internal</span>(</span></span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main<span class="literal">()</span> &#123;</span><br><span class="line">  var s1 = <span class="keyword">new</span> <span class="constructor">Singleton()</span>;</span><br><span class="line">  var s2 = <span class="keyword">new</span> <span class="constructor">Singleton()</span>;</span><br><span class="line">  <span class="keyword">assert</span>(identical(s1, s2));</span><br><span class="line">  <span class="keyword">assert</span>(s1<span class="operator"> == </span>s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tham-so-dang-positional-va-named-trong-Dart"><a href="#Tham-so-dang-positional-va-named-trong-Dart" class="headerlink" title="Tham số dạng positional và named trong Dart"></a>Tham số dạng positional và named trong Dart</h3><p>Dart đưa ra hai khái niệm là <code>positional</code> và <code>named</code> tham số. Hai khái niệm này khác nhau ở điểm. <code>positional</code> cho phép ta đặt giá trị mặc định hoặc không (mặc định là null) cho tham số truyền vào. Từ đó, ta có thể thêm bớt số lượng tham số trong lời gọi hàm. Ràng buộc của <code>positional</code> là vị trí khai báo phải nằm cuối cùng trong phần khai báo. Danh sách <code>positional</code> trong lời gọi hàm không được thay đổi thứ tự.</p>
+<p>Ví dụ về positional</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getNumber(<span class="built_in">String</span> one, <span class="built_in">String</span> two, [<span class="built_in">int</span> three, <span class="built_in">String</span> four]) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'<span class="subst">$one</span>, <span class="subst">$two</span>, <span class="subst">$three</span>, <span class="subst">$four</span>'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>) == <span class="string">'1, 2, null, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="number">3</span>) == <span class="string">'1, 2, 3, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="number">3</span>, <span class="string">'4'</span>) == <span class="string">'1, 2, 3, 4'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>named</code> thì linh hoạt hơn khi chấp nhận không theo thứ tự khi gọi hàm miễn là thỏa mãn việc tên tham số được chỉ rõ. Lưu ý là <code>không thể có cả positional lẫn named trong cùng một method</code>.</p>
+<p>Ví dụ về named</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getNumber(<span class="built_in">String</span> one, <span class="built_in">String</span> two, &#123;<span class="built_in">int</span> three, <span class="built_in">String</span> four&#125;) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'<span class="subst">$one</span>, <span class="subst">$two</span>, <span class="subst">$three</span>, <span class="subst">$four</span>'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>) == <span class="string">'1, 2, null, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, three: <span class="number">3</span>) == <span class="string">'1, 2, 3, null'</span>);</span><br><span class="line">  <span class="keyword">assert</span>(getNumber(<span class="string">'1'</span>, <span class="string">'2'</span>, four: <span class="string">'4'</span>) == <span class="string">'1, 2, null, 4'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Nguồn : <a href="https://kipalog.com/posts/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart" target="_blank" rel="noopener">https://kipalog.com/posts/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart</a></p>
+
+      
+      
+    </div>
+    
+
+    <!-- <footer class="article-footer">
+      <a data-url="toandn96.github.io/2019/11/26/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart/" data-id="ck3fkuna1000d3oj25ese4kx1" class="article-share-link">Share</a>
+      
+      
+    </footer> -->
+  </div>
+  <!-- 
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/26/Hoc-Regex-co-ban/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Học Regex cơ bản
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+   -->
+</article>
+
+</section>
       </div>
       <!-- <footer id="footer">
   
@@ -267,13 +268,6 @@
   </div>
 </footer> -->
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -289,4 +283,5 @@
 
   </div>
 </body>
+
 </html>

@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -53,120 +54,8 @@
   </div> -->
 <!-- </header> -->
       <div class="outer">
-        <section id="main"><article id="post-Vong-doi-cua-mot-React-Component" class="article article-type-post" itemscope
-  itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/26/Vong-doi-cua-mot-React-Component/" class="article-date">
-  <time datetime="2019-11-26T06:19:53.000Z" itemprop="datePublished">2019-11-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/React/">React</a>,<a class="article-category-link" href="/categories/React/ReactJS/">ReactJS</a>,<a class="article-category-link" href="/categories/React/ReactJS/React-Native/">React Native</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      
-      
-  
-    <h1 class="article-title" itemprop="name">
-      Vòng đời của một React Component
-    </h1>
-  
-
-      
-    </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p><img src="https://viblo.asia/uploads/0572a599-4aef-4c3e-80cf-5a05eae20a13.png" alt=""></p>
-<h2 id="constructor-props"><a href="#constructor-props" class="headerlink" title="constructor(props)"></a>constructor(props)</h2><ul>
-<li>Được gọi khi một thể hiện của component được tạo ra.</li>
-<li>Có thể dùng để khởi tạo state cho component.</li>
-<li>Cũng có thể dùng để “bind” các hàm của component.</li>
-<li>Nếu phải cài đặt hàm này thì phải khai báo 1 tham số props cho nó và phải gọi super(props) đầu tiên.</li>
-<li>Nếu không làm gì thì không phải cài đặt hàm này.</li>
-</ul>
-<h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount()"></a>componentWillMount()</h2><ul>
-<li>Được gọi trước khi render().</li>
-<li>Dùng để đăng ký các sự kiện toàn cục.</li>
-<li>Dựa vào các props để tính toán và set lại state</li>
-</ul>
-<h2 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h2><ul>
-<li>Hàm này bắt buộc phải có trong component().</li>
-<li>Trả về 1 đối tượng JSX (có thể lồng các đối tượng với nhau nhưng phải có 1 đối tượng gói tất cả các đối tượng lại) để hiển thị hoặc null / false nếu không muốn hiển thị gì.</li>
-<li>Không được gọi setState() trong hàm này (cũng như trong các hàm mà hàm này gọi đến), bởi khi gọi setState() thì hàm render sẽ được gọi =&gt; gây ra lặp vô hạn.</li>
-</ul>
-<h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount()"></a>componentDidMount()</h2><ul>
-<li>Ngay sau khi hàm render được gọi đến lần đầu tiên chạy xong thì hàm này sẽ được chạy.</li>
-<li>Thường dùng để fetch dữ liệu từ server và sau đó setState để render dữ liệu ra.</li>
-<li>Đến đây thì các phần tử đã được sinh ra rồi, và có thể tương tác với DOM bằng JS trong hàm này.</li>
-</ul>
-<h2 id="componentWillReceiveProps-nextProps"><a href="#componentWillReceiveProps-nextProps" class="headerlink" title="componentWillReceiveProps(nextProps)"></a>componentWillReceiveProps(nextProps)</h2><ul>
-<li>Hàm này được chạy khi mà props của component đã được sinh ra có sự thay đổi.</li>
-<li>Phải gọi setState() nếu muốn render lại.</li>
-</ul>
-<h2 id="shouldComponentUpdate-nextProps-nextState"><a href="#shouldComponentUpdate-nextProps-nextState" class="headerlink" title="shouldComponentUpdate(nextProps, nextState)"></a>shouldComponentUpdate(nextProps, nextState)</h2><ul>
-<li>Được gọi trước render.</li>
-<li>Trả về true / false. Nếu false thì sẽ không render lại. Mặc định là true.</li>
-</ul>
-<h2 id="componentWillUpdate-nextProps-nextState"><a href="#componentWillUpdate-nextProps-nextState" class="headerlink" title="componentWillUpdate(nextProps, nextState)"></a>componentWillUpdate(nextProps, nextState)</h2><ul>
-<li>Được gọi ngay sau shouldComponentUpdate() nếu hàm này trả về true.</li>
-<li>Không gọi setState() trong hàm này bởi hàm này là để chuẩn bị update cho đối tượng chứ không phải tạo ra 1 update mới, sẽ tạo ra lặp vô hạn.</li>
-<li>Hàm render sẽ được gọi ngay sau hàm này.</li>
-</ul>
-<h2 id="componentDidUpdate-prevProps-prevState"><a href="#componentDidUpdate-prevProps-prevState" class="headerlink" title="componentDidUpdate(prevProps, prevState)"></a>componentDidUpdate(prevProps, prevState)</h2><ul>
-<li>Được gọi ngay sau render() từ lần render thứ 2 trở đi.</li>
-<li>Đây cũng là 1 cơ hội để thao tác với các phần tử DOM bằng JS.</li>
-</ul>
-<h2 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a>componentWillUnmount()</h2><ul>
-<li>Được gọi khi 1 component được loại bỏ khỏi DOM.</li>
-<li>Thực hiện các thao tác dọn dẹp như huỷ các timer, loại bỏ các phần tử thừa, …</li>
-</ul>
-
-      
-      
-    </div>
-    
-
-    <!-- <footer class="article-footer">
-      <a data-url="toandn96.github.io/2019/11/26/Vong-doi-cua-mot-React-Component/" data-id="ck3fj637y0003l0j2h4zw7u76" class="article-share-link">Share</a>
-      
-      
-    </footer> -->
-  </div>
-  <!-- 
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/26/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
         
-          For vs forEach() vs for/in vs for/of in JavaScript
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/11/26/Hoc-Regex-co-ban/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Học Regex cơ bản</div>
-    </a>
-  
-</nav>
-
-   -->
-</article>
-
-</section>
-        
-          <aside style="position: relative;" id="sidebar" >
+        <aside style="position: relative;" id="sidebar" >
   <div style="display: flex;justify-content: center;align-items: center;height: 100px;">
     <div id="header-home">
       <picture>
@@ -262,6 +151,118 @@
 
 </aside>
         
+        <section id="main"><article id="post-Vong-doi-cua-mot-React-Component" class="article article-type-post" itemscope
+  itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/Vong-doi-cua-mot-React-Component/" class="article-date">
+  <time datetime="2019-11-26T06:19:53.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/React/">React</a>,<a class="article-category-link" href="/categories/React/ReactJS/">ReactJS</a>,<a class="article-category-link" href="/categories/React/ReactJS/React-Native/">React Native</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Vòng đời của một React Component
+    </h1>
+  
+
+      
+    </header>
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p><img src="https://viblo.asia/uploads/0572a599-4aef-4c3e-80cf-5a05eae20a13.png" alt=""></p>
+<h2 id="constructor-props"><a href="#constructor-props" class="headerlink" title="constructor(props)"></a>constructor(props)</h2><ul>
+<li>Được gọi khi một thể hiện của component được tạo ra.</li>
+<li>Có thể dùng để khởi tạo state cho component.</li>
+<li>Cũng có thể dùng để “bind” các hàm của component.</li>
+<li>Nếu phải cài đặt hàm này thì phải khai báo 1 tham số props cho nó và phải gọi super(props) đầu tiên.</li>
+<li>Nếu không làm gì thì không phải cài đặt hàm này.</li>
+</ul>
+<h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount()"></a>componentWillMount()</h2><ul>
+<li>Được gọi trước khi render().</li>
+<li>Dùng để đăng ký các sự kiện toàn cục.</li>
+<li>Dựa vào các props để tính toán và set lại state</li>
+</ul>
+<h2 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h2><ul>
+<li>Hàm này bắt buộc phải có trong component().</li>
+<li>Trả về 1 đối tượng JSX (có thể lồng các đối tượng với nhau nhưng phải có 1 đối tượng gói tất cả các đối tượng lại) để hiển thị hoặc null / false nếu không muốn hiển thị gì.</li>
+<li>Không được gọi setState() trong hàm này (cũng như trong các hàm mà hàm này gọi đến), bởi khi gọi setState() thì hàm render sẽ được gọi =&gt; gây ra lặp vô hạn.</li>
+</ul>
+<h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount()"></a>componentDidMount()</h2><ul>
+<li>Ngay sau khi hàm render được gọi đến lần đầu tiên chạy xong thì hàm này sẽ được chạy.</li>
+<li>Thường dùng để fetch dữ liệu từ server và sau đó setState để render dữ liệu ra.</li>
+<li>Đến đây thì các phần tử đã được sinh ra rồi, và có thể tương tác với DOM bằng JS trong hàm này.</li>
+</ul>
+<h2 id="componentWillReceiveProps-nextProps"><a href="#componentWillReceiveProps-nextProps" class="headerlink" title="componentWillReceiveProps(nextProps)"></a>componentWillReceiveProps(nextProps)</h2><ul>
+<li>Hàm này được chạy khi mà props của component đã được sinh ra có sự thay đổi.</li>
+<li>Phải gọi setState() nếu muốn render lại.</li>
+</ul>
+<h2 id="shouldComponentUpdate-nextProps-nextState"><a href="#shouldComponentUpdate-nextProps-nextState" class="headerlink" title="shouldComponentUpdate(nextProps, nextState)"></a>shouldComponentUpdate(nextProps, nextState)</h2><ul>
+<li>Được gọi trước render.</li>
+<li>Trả về true / false. Nếu false thì sẽ không render lại. Mặc định là true.</li>
+</ul>
+<h2 id="componentWillUpdate-nextProps-nextState"><a href="#componentWillUpdate-nextProps-nextState" class="headerlink" title="componentWillUpdate(nextProps, nextState)"></a>componentWillUpdate(nextProps, nextState)</h2><ul>
+<li>Được gọi ngay sau shouldComponentUpdate() nếu hàm này trả về true.</li>
+<li>Không gọi setState() trong hàm này bởi hàm này là để chuẩn bị update cho đối tượng chứ không phải tạo ra 1 update mới, sẽ tạo ra lặp vô hạn.</li>
+<li>Hàm render sẽ được gọi ngay sau hàm này.</li>
+</ul>
+<h2 id="componentDidUpdate-prevProps-prevState"><a href="#componentDidUpdate-prevProps-prevState" class="headerlink" title="componentDidUpdate(prevProps, prevState)"></a>componentDidUpdate(prevProps, prevState)</h2><ul>
+<li>Được gọi ngay sau render() từ lần render thứ 2 trở đi.</li>
+<li>Đây cũng là 1 cơ hội để thao tác với các phần tử DOM bằng JS.</li>
+</ul>
+<h2 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a>componentWillUnmount()</h2><ul>
+<li>Được gọi khi 1 component được loại bỏ khỏi DOM.</li>
+<li>Thực hiện các thao tác dọn dẹp như huỷ các timer, loại bỏ các phần tử thừa, …</li>
+</ul>
+
+      
+      
+    </div>
+    
+
+    <!-- <footer class="article-footer">
+      <a data-url="toandn96.github.io/2019/11/26/Vong-doi-cua-mot-React-Component/" data-id="ck3fkun8j00033oj27pzdgv68" class="article-share-link">Share</a>
+      
+      
+    </footer> -->
+  </div>
+  <!-- 
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/26/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          For vs forEach() vs for/in vs for/of in JavaScript
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/26/Hoc-Regex-co-ban/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Học Regex cơ bản</div>
+    </a>
+  
+</nav>
+
+   -->
+</article>
+
+</section>
       </div>
       <!-- <footer id="footer">
   
@@ -273,13 +274,6 @@
   </div>
 </footer> -->
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -295,4 +289,5 @@
 
   </div>
 </body>
+
 </html>

@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -53,123 +54,8 @@
   </div> -->
 <!-- </header> -->
       <div class="outer">
-        <section id="main"><article id="post-For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript" class="article article-type-post" itemscope
-  itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/26/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/" class="article-date">
-  <time datetime="2019-11-26T06:23:06.000Z" itemprop="datePublished">2019-11-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      
-      
-  
-    <h1 class="article-title" itemprop="name">
-      For vs forEach() vs for/in vs for/of in JavaScript
-    </h1>
-  
-
-      
-    </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p><img src="https://techtalk.vn/wp-content/uploads/2019/03/574716-636614621185089877-16x9-696x392.jpg" alt="" title="574716-636614621185089877-16x9"></p>
-<p>Trong bài viết này chúng ta sẽ cùng so sánh sự khác biệt của 4 cách duyệt mảng trong Javascript:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; ++i)</span><br><span class="line">arr.forEach(<span class="function">(<span class="params">v, i</span>) =&gt;</span> &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> v <span class="keyword">of</span> arr)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Syntactic-Overview"><a href="#Syntactic-Overview" class="headerlink" title="Syntactic Overview"></a>Syntactic Overview</h2><p>Khởi tạo mảng:</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const  arr</span>  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br></pre></td></tr></table></figure>
-
-<p><code>for</code> và <code>for/in</code> cho phép bạn truy cập vào index của mảng chứ không phải là phần tử thực tế, thế nên bạn cần sử dụng <code>arr[i]</code> để lấy giá trị:</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>  (let  <span class="built_in">i</span>  =  <span class="number">0</span>;  <span class="built_in">i</span>  &lt;  arr.<span class="built_in">length</span>;  ++<span class="built_in">i</span>)  &#123;</span><br><span class="line"></span><br><span class="line">  console.<span class="built_in">log</span>(arr[<span class="built_in">i</span>]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (let  <span class="built_in">i</span>  in  arr)  &#123;</span><br><span class="line"></span><br><span class="line">  console.<span class="built_in">log</span>(arr[<span class="built_in">i</span>]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Với <code>forEach()</code> và <code>for/of</code> bạn có thể truy cập trực tiếp đến giá trị của phần tử, <code>forEach()</code> cho phép bạn truy cập đến <code>index</code> của phần tử, <code>for/of</code> thì không.</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="params">(v,  i)</span>  =&gt;</span>  <span class="built_in">console</span>.log(v));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (const  v  <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(v);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Non-Numeric-Properties"><a href="#Non-Numeric-Properties" class="headerlink" title="Non-Numeric Properties"></a>Non-Numeric Properties</h2><p>Array trong javascript là object nên bạn cũng có thể thêm một phần tử có key là <code>string</code>thay vì chỉ là <code>number</code> thôi:</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> arr;  <span class="comment">// 'object'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Assign to a non-numeric property</span></span><br><span class="line"></span><br><span class="line">arr.test  =  <span class="string">'bad'</span>;</span><br><span class="line"></span><br><span class="line">arr.test;  <span class="comment">// 'abc'</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">1</span>]  ===  arr[<span class="string">'1'</span>];  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>3 trên 4 cách duyệt mảng bên trên bỏ qua các phần tử có key không phải là số, trừ <code>for/in</code>:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.test  =  <span class="string">'bad'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c, bad"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">let</span>  i  <span class="keyword">in</span>  arr)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Đó là ví do tại sao lặp qua một mảng sử dụng <code>for/in</code> là bad practice, những cách còn lại bỏ qua các phần tử có key không phải <code>number</code>:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.test  =  <span class="string">'abc'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">let</span>  i  =  <span class="number">0</span>;  i  &lt;  arr.length;  ++i)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c"</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function">(<span class="params">el,  i</span>)  =&gt;</span>  <span class="built_in">console</span>.log(i,  el));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">const</span>  el <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Thế nên tránh sử dụng <code>for/in</code> trừ khi bạn thực sự muốn duyệt qua các phần tử có key không phải số. Sử dụng rule <code>guard-for-in</code> của ESLint để không cho phép <code>for/in</code></p>
-<h2 id="Empty-Elements"><a href="#Empty-Elements" class="headerlink" title="Empty Elements"></a>Empty Elements</h2><p>Javascript array cho phép chứa các phần tử rỗng, dưới đây là một ví dụ về cú pháp hợp lệ:</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.length;  <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
-
-<p><code>for/in</code> và <code>for/each</code>bỏ qua các phần tử rỗng, <code>for</code> và <code>for/of</code> thì không:</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Prints <span class="string">"a, undefined, c"</span></span><br><span class="line"></span><br><span class="line">for  (<span class="name">let</span>  i  =  <span class="number">0</span><span class="comment">;  i  &lt;  arr.length;  ++i)  &#123;</span></span><br><span class="line"></span><br><span class="line">  console.log(<span class="name">arr</span>[i])<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Prints <span class="string">"a, c"</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="name">v</span>  =&gt;  console.log(<span class="name">v</span>))<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">// Prints <span class="string">"a, c"</span></span><br><span class="line"></span><br><span class="line">for  (<span class="name">let</span>  i  in  arr)  &#123;</span><br><span class="line"></span><br><span class="line">  console.log(<span class="name">arr</span>[i])<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Prints <span class="string">"a, undefined, c"</span></span><br><span class="line"></span><br><span class="line">for  (<span class="name">const</span>  v  of arr)  &#123;</span><br><span class="line"></span><br><span class="line">  console.log(<span class="name">v</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Function-Context"><a href="#Function-Context" class="headerlink" title="Function Context"></a>Function Context</h2><p>Scope của this bên trong <code>for</code>, <code>for/in</code>, và <code>for/of</code> chính là scope bên ngoài của các cấu trúc lặp này, <code>forEach()</code> thì không như vậy trừ khi bạn dùng arrow function</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "undefined"</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Thế nên sử dụng arrow function đối với <code>forEach</code> nếu không this sẽ không tồn tại.</p>
-<h2 id="Async-Await-va-Generators"><a href="#Async-Await-va-Generators" class="headerlink" title="Async/Await và Generators"></a>Async/Await và Generators</h2><p><code>forEach</code> cũng không hoạt động tốt với Async/Await hoặc Generators. Nếu forEach callback là đồng bộ thì không thành vấn đề, nhưng bạn không thể sử dụng <code>await</code> bên trong forEach callback</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>  <span class="title">run</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">el</span>  =&gt;</span>  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// SyntaxError</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Không sử dụng được <code>yield</code> nốt:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>*  <span class="title">run</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">el</span>  =&gt;</span>  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// SyntaxError</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Sử dụng trong <code>for/of</code> thì hoàn toàn ok:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>  <span class="title">asyncFn</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>  (<span class="keyword">const</span>  el <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>*  <span class="title">generatorFn</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>  (<span class="keyword">const</span>  el <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h2><p>Nói chung, <code>for/of</code> là cách mạnh mẽ nhất để lặp lại qua một mảng trong JavaScript. Nó ngắn gọn hơn một vòng lặp thông thường và không có nhiều trường hợp đặc biệt như <code>for/in</code> và <code>forEach()</code>. Nhược điểm chính của <code>for/of</code> là bạn không thể trực tiếp lấy được index của phần tử đang được duyệt(*). <code>forEach()</code> có một số trường hợp sẽ khiến code của bạn chạy không theo ý muốn nên cần hạn chế dùng , nhưng trong nhiều trường hợp khác nó giúp code của bạn ngắn gọn hơn.</p>
-<p>(*) Để lấy được index của phần tử đang được duyệt khi sử dụng <code>for/of</code>, sử dụng Array entries function:</p>
-<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">const</span>  [i,  v]  of arr.entries())  &#123;</span><br><span class="line"></span><br><span class="line">  console.<span class="built_in">log</span>(i,  v);  // Prints <span class="string">"0 a"</span>, <span class="string">"1 b"</span>, <span class="string">"2 c"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Nguồn <a href="https://viblo.asia/p/for-vs-foreach-vs-forin-vs-forof-in-javascript-eW65GeE9ZDO" target="_blank" rel="noopener">Viblo</a></p>
-
-      
-      
-    </div>
-    
-
-    <!-- <footer class="article-footer">
-      <a data-url="toandn96.github.io/2019/11/26/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/" data-id="ck3fj637p0000l0j2c0vgaa7g" class="article-share-link">Share</a>
-      
-      
-    </footer> -->
-  </div>
-  <!-- 
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/26/Thu-thuat-khi-lam-viec-voi-Object-su-dung-resting-va-spreading/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
         
-          Thủ thuật khi làm việc với Object sử dụng resting và spreading
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/11/26/Vong-doi-cua-mot-React-Component/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vòng đời của một React Component</div>
-    </a>
-  
-</nav>
-
-   -->
-</article>
-
-</section>
-        
-          <aside style="position: relative;" id="sidebar" >
+        <aside style="position: relative;" id="sidebar" >
   <div style="display: flex;justify-content: center;align-items: center;height: 100px;">
     <div id="header-home">
       <picture>
@@ -265,6 +151,121 @@
 
 </aside>
         
+        <section id="main"><article id="post-For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/" class="article-date">
+  <time datetime="2019-11-26T06:23:06.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      
+      
+  
+    <h1 class="article-title" itemprop="name">
+      For vs forEach() vs for/in vs for/of in JavaScript
+    </h1>
+  
+
+      
+    </header>
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      <p><img src="https://techtalk.vn/wp-content/uploads/2019/03/574716-636614621185089877-16x9-696x392.jpg" alt="" title="574716-636614621185089877-16x9"></p>
+<p>Trong bài viết này chúng ta sẽ cùng so sánh sự khác biệt của 4 cách duyệt mảng trong Javascript:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; ++i)</span><br><span class="line">arr.forEach(<span class="function">(<span class="params">v, i</span>) =&gt;</span> &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> v <span class="keyword">of</span> arr)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Syntactic-Overview"><a href="#Syntactic-Overview" class="headerlink" title="Syntactic Overview"></a>Syntactic Overview</h2><p>Khởi tạo mảng:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const  arr</span>  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br></pre></td></tr></table></figure>
+
+<p><code>for</code> và <code>for/in</code> cho phép bạn truy cập vào index của mảng chứ không phải là phần tử thực tế, thế nên bạn cần sử dụng <code>arr[i]</code> để lấy giá trị:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>  (let  <span class="built_in">i</span>  =  <span class="number">0</span>;  <span class="built_in">i</span>  &lt;  arr.<span class="built_in">length</span>;  ++<span class="built_in">i</span>)  &#123;</span><br><span class="line"></span><br><span class="line">  console.<span class="built_in">log</span>(arr[<span class="built_in">i</span>]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (let  <span class="built_in">i</span>  in  arr)  &#123;</span><br><span class="line"></span><br><span class="line">  console.<span class="built_in">log</span>(arr[<span class="built_in">i</span>]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Với <code>forEach()</code> và <code>for/of</code> bạn có thể truy cập trực tiếp đến giá trị của phần tử, <code>forEach()</code> cho phép bạn truy cập đến <code>index</code> của phần tử, <code>for/of</code> thì không.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="params">(v,  i)</span>  =&gt;</span>  <span class="built_in">console</span>.log(v));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (const  v  <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(v);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Non-Numeric-Properties"><a href="#Non-Numeric-Properties" class="headerlink" title="Non-Numeric Properties"></a>Non-Numeric Properties</h2><p>Array trong javascript là object nên bạn cũng có thể thêm một phần tử có key là <code>string</code>thay vì chỉ là <code>number</code> thôi:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> arr;  <span class="comment">// 'object'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Assign to a non-numeric property</span></span><br><span class="line"></span><br><span class="line">arr.test  =  <span class="string">'bad'</span>;</span><br><span class="line"></span><br><span class="line">arr.test;  <span class="comment">// 'abc'</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">1</span>]  ===  arr[<span class="string">'1'</span>];  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>3 trên 4 cách duyệt mảng bên trên bỏ qua các phần tử có key không phải là số, trừ <code>for/in</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.test  =  <span class="string">'bad'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c, bad"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">let</span>  i  <span class="keyword">in</span>  arr)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Đó là ví do tại sao lặp qua một mảng sử dụng <code>for/in</code> là bad practice, những cách còn lại bỏ qua các phần tử có key không phải <code>number</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.test  =  <span class="string">'abc'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">let</span>  i  =  <span class="number">0</span>;  i  &lt;  arr.length;  ++i)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c"</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function">(<span class="params">el,  i</span>)  =&gt;</span>  <span class="built_in">console</span>.log(i,  el));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "a, b, c"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">const</span>  el <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Thế nên tránh sử dụng <code>for/in</code> trừ khi bạn thực sự muốn duyệt qua các phần tử có key không phải số. Sử dụng rule <code>guard-for-in</code> của ESLint để không cho phép <code>for/in</code></p>
+<h2 id="Empty-Elements"><a href="#Empty-Elements" class="headerlink" title="Empty Elements"></a>Empty Elements</h2><p>Javascript array cho phép chứa các phần tử rỗng, dưới đây là một ví dụ về cú pháp hợp lệ:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.length;  <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><code>for/in</code> và <code>for/each</code>bỏ qua các phần tử rỗng, <code>for</code> và <code>for/of</code> thì không:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Prints <span class="string">"a, undefined, c"</span></span><br><span class="line"></span><br><span class="line">for  (<span class="name">let</span>  i  =  <span class="number">0</span><span class="comment">;  i  &lt;  arr.length;  ++i)  &#123;</span></span><br><span class="line"></span><br><span class="line">  console.log(<span class="name">arr</span>[i])<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Prints <span class="string">"a, c"</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="name">v</span>  =&gt;  console.log(<span class="name">v</span>))<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">// Prints <span class="string">"a, c"</span></span><br><span class="line"></span><br><span class="line">for  (<span class="name">let</span>  i  in  arr)  &#123;</span><br><span class="line"></span><br><span class="line">  console.log(<span class="name">arr</span>[i])<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Prints <span class="string">"a, undefined, c"</span></span><br><span class="line"></span><br><span class="line">for  (<span class="name">const</span>  v  of arr)  &#123;</span><br><span class="line"></span><br><span class="line">  console.log(<span class="name">v</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Function-Context"><a href="#Function-Context" class="headerlink" title="Function Context"></a>Function Context</h2><p>Scope của this bên trong <code>for</code>, <code>for/in</code>, và <code>for/of</code> chính là scope bên ngoài của các cấu trúc lặp này, <code>forEach()</code> thì không như vậy trừ khi bạn dùng arrow function</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prints "undefined"</span></span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Thế nên sử dụng arrow function đối với <code>forEach</code> nếu không this sẽ không tồn tại.</p>
+<h2 id="Async-Await-va-Generators"><a href="#Async-Await-va-Generators" class="headerlink" title="Async/Await và Generators"></a>Async/Await và Generators</h2><p><code>forEach</code> cũng không hoạt động tốt với Async/Await hoặc Generators. Nếu forEach callback là đồng bộ thì không thành vấn đề, nhưng bạn không thể sử dụng <code>await</code> bên trong forEach callback</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>  <span class="title">run</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">el</span>  =&gt;</span>  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// SyntaxError</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Không sử dụng được <code>yield</code> nốt:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>*  <span class="title">run</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">el</span>  =&gt;</span>  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// SyntaxError</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Sử dụng trong <code>for/of</code> thì hoàn toàn ok:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>  <span class="title">asyncFn</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>  (<span class="keyword">const</span>  el <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>*  <span class="title">generatorFn</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span>  arr  =  [<span class="string">'a'</span>,  <span class="string">'b'</span>,  <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>  (<span class="keyword">const</span>  el <span class="keyword">of</span> arr)  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">new</span>  <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>  =&gt;</span>  setTimeout(resolve,  <span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(el);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ket-luan"><a href="#Ket-luan" class="headerlink" title="Kết luận"></a>Kết luận</h2><p>Nói chung, <code>for/of</code> là cách mạnh mẽ nhất để lặp lại qua một mảng trong JavaScript. Nó ngắn gọn hơn một vòng lặp thông thường và không có nhiều trường hợp đặc biệt như <code>for/in</code> và <code>forEach()</code>. Nhược điểm chính của <code>for/of</code> là bạn không thể trực tiếp lấy được index của phần tử đang được duyệt(*). <code>forEach()</code> có một số trường hợp sẽ khiến code của bạn chạy không theo ý muốn nên cần hạn chế dùng , nhưng trong nhiều trường hợp khác nó giúp code của bạn ngắn gọn hơn.</p>
+<p>(*) Để lấy được index của phần tử đang được duyệt khi sử dụng <code>for/of</code>, sử dụng Array entries function:</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>  (<span class="keyword">const</span>  [i,  v]  of arr.entries())  &#123;</span><br><span class="line"></span><br><span class="line">  console.<span class="built_in">log</span>(i,  v);  // Prints <span class="string">"0 a"</span>, <span class="string">"1 b"</span>, <span class="string">"2 c"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Nguồn <a href="https://viblo.asia/p/for-vs-foreach-vs-forin-vs-forof-in-javascript-eW65GeE9ZDO" target="_blank" rel="noopener">Viblo</a></p>
+
+      
+      
+    </div>
+    
+
+    <!-- <footer class="article-footer">
+      <a data-url="toandn96.github.io/2019/11/26/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/" data-id="ck3fkun8a00003oj2hrsxg3dp" class="article-share-link">Share</a>
+      
+      
+    </footer> -->
+  </div>
+  <!-- 
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/26/Thu-thuat-khi-lam-viec-voi-Object-su-dung-resting-va-spreading/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Thủ thuật khi làm việc với Object sử dụng resting và spreading
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/26/Vong-doi-cua-mot-React-Component/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vòng đời của một React Component</div>
+    </a>
+  
+</nav>
+
+   -->
+</article>
+
+</section>
       </div>
       <!-- <footer id="footer">
   
@@ -276,13 +277,6 @@
   </div>
 </footer> -->
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -298,4 +292,5 @@
 
   </div>
 </body>
+
 </html>
