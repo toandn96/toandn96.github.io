@@ -1,187 +1,105 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="vi">
 
-  
-  <title>Học Regex cơ bản | ToanDN&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Bài viết được dịch từ https:&#x2F;&#x2F;medium.com&#x2F;factory-mind&#x2F;regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285 Regular expressions (regex or regexp) cực kỳ hữu ích trong việc trích xuất thông tin t">
-<meta name="keywords" content="Regex">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Học Regex cơ bản">
-<meta property="og:url" content="toandn96.github.io&#x2F;Hoc-Regex-co-ban&#x2F;index.html">
-<meta property="og:site_name" content="ToanDN&#39;s Blog">
-<meta property="og:description" content="Bài viết được dịch từ https:&#x2F;&#x2F;medium.com&#x2F;factory-mind&#x2F;regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285 Regular expressions (regex or regexp) cực kỳ hữu ích trong việc trích xuất thông tin t">
-<meta property="og:locale" content="vi">
-<meta property="og:updated_time" content="2019-11-26T06:21:18.443Z">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="ToanDN&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="https://raw.githubusercontent.com/toandn96/source/master/doug.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico" />
+    
+
+    <title>
+        
+          Học Regex cơ bản - I&#39;m ToanDN
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <!-- Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    <!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('img')
+})
+</script>
+ -->
 </head>
 
-
 <body>
-  <div id="container">
-    <div id="wrap">
-      <!-- <header id="header">
-  <div id="header-outer" class="outer"> -->
-    <!-- <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">ToanDN&#39;s Blog</a>
-      </h1>
-      
-    </div> -->
-    <!-- <div id="header-home">
-      <picture>
-        <a href="/">
-          <img class="img-header"
-            src="https://www.lyyourc.com/static/60b519c78e732596dffdeeec7c23be4b/731cb/avatar.png" />
-        </a>
-      </picture>
-    </div>
-
-  </div> -->
-<!-- </header> -->
-      <div class="outer">
-        
-        <aside style="position: relative;" id="sidebar" >
-  <div style="display: flex;justify-content: center;align-items: center;height: 100px;">
-    <div id="header-home">
-      <picture>
-        <a href="/">
-          <img class="img-header" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png" />
-        </a>
-      </picture>
-    </div>
+  <div class="container">
+    <div class="book-container">
+      <div class="columns">
+        <div class="column col-2 hide-lg config-header">
+          <div class="book-sidebar">
+  <div class="book-sidebar-logo">
+    <picture>
+      <a href="/">
+        <img class="img-header" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png" />
+      </a>
+    </picture>
   </div>
-
-  
-  
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Dart/">Dart</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Dart/Flutter/">Flutter</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/React/ReactJS/">ReactJS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/React/ReactJS/React-Native/">React Native</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Regex/">Regex</a></li></ul>
-    </div>
-  </div>
-
-
-  
-  <!-- 
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regex/" rel="tag">Regex</a></li></ul>
-    </div>
-  </div>
- -->
-
-  
-  <!-- 
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Regex/" style="font-size: 10px;">Regex</a>
-    </div>
-  </div>
- -->
-  
-  <!-- 
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">tháng 11 2019</a></li></ul>
-    </div>
-  </div>
- -->
-
-  
-  <!-- 
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/Thu-thuat-khi-lam-viec-voi-Object-su-dung-resting-va-spreading/">Thủ thuật khi làm việc với Object sử dụng resting và spreading</a>
-          </li>
-        
-          <li>
-            <a href="/For-vs-forEach-vs-for-in-vs-for-of-in-JavaScript/">For vs forEach() vs for/in vs for/of in JavaScript</a>
-          </li>
-        
-          <li>
-            <a href="/Vong-doi-cua-mot-React-Component/">Vòng đời của một React Component</a>
-          </li>
-        
-          <li>
-            <a href="/Hoc-Regex-co-ban/">Học Regex cơ bản</a>
-          </li>
-        
-          <li>
-            <a href="/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart/">Những điểm đánh dấu khi tìm hiểu về Dart</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
- -->
-  
-
-  <div class="about">
-    <ul>
-      <li>
-        <a href="https://github.com/toandn96/" rel="noopener noreferrer" target="blank">Github</a>
-      </li>
-      <li>
-        <a href="https://github.com/toandn96/" rel="noopener noreferrer" target="blank">ToanDN</a>
-      </li>
-    </ul>
-  </div>
-
-</aside>
-        
-        <section id="main"><article id="post-Hoc-Regex-co-ban" class="article article-type-post" itemscope
-  itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Hoc-Regex-co-ban/" class="article-date">
-  <time datetime="2019-11-26T06:16:51.000Z" itemprop="datePublished">2019-11-26</time>
-</a>
+  <h4 class="site-meta">
+    <a href="/">I&#39;m ToanDN</a>
+  </h4>
+  <div class="sidebar-content">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Regex/">Regex</a>
   </div>
+</div>
+        </div>
 
+        <div class="column col-8 col-lg-12 config-main">
+          <div class="book-content">
+            <div class="book-navbar">
+  <header class="navbar">
+  <section class="navbar-section">
+    <img class="navbar-icon" src="/favicon.ico">
+  </section>
+  <section class="navbar-center">
+    I&#39;m ToanDN
+  </section>
+  <section class="navbar-section">
+    <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label>
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
   </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      
-      
-  
-    <h1 class="article-title" itemprop="name">
-      Học Regex cơ bản
-    </h1>
-  
+</div>
+</div>
 
-      
-    </header>
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      <p>Bài viết được dịch từ <a href="https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285" target="_blank" rel="noopener">https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285</a></p>
+<div class="book-post">
+  <h1 style="border: none;">Học Regex cơ bản</h1>
+  <p>Bài viết được dịch từ <a href="https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285" target="_blank" rel="noopener">https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285</a></p>
 <p>Regular expressions (regex or regexp) cực kỳ hữu ích trong việc trích xuất thông tin từ 1 đoạn text. Nó tìm kiếm những ký tự trong đoạn text phù hợp với một quy tắc cụ thể, thường gọi là search pattern. Và học regex chính là việc học cách viết ra những search pattern đó.</p>
 <p>Ứng dụng của regex rất da dạng, từ validate, phân tích và thay thế ký tự chong chuỗi, chuyển dữ liệu sang một định dạng khác, trích xuất data của một trang web ..</p>
 <p>Một trong những điều thú vị của regex là bạn chỉ cần học một lần và có thể sử dụng ở hầu hết các ngôn ngữ lập trình(JavaScript, Java, VB, C #, C / C++, Python, Perl, Ruby, Delphi, R, Tcl…) và cú pháp cơ bản là giống nhau ở các ngôn ngữ lập trình, chỉ có sự khác biệt nhỏ ở những cú pháp nâng cao.</p>
@@ -288,69 +206,85 @@
 <p>Nên các bạn hãy cân nhắc phương pháp tốt nhất để giảiquyết vấn đề của mình nhé.</p>
 <p>Nguồn: <a href="https://viblo.asia/p/hoc-regex-co-ban-GrLZDvxV5k0" target="_blank" rel="noopener">https://viblo.asia/p/hoc-regex-co-ban-GrLZDvxV5k0</a></p>
 
-      
-      
-    </div>
-    
+</div>
 
-    <!-- <footer class="article-footer">
-      <a data-url="toandn96.github.io/Hoc-Regex-co-ban/" data-id="ck3flu8fk000dn8j23uxh74gl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regex/" rel="tag">Regex</a></li></ul>
 
-    </footer> -->
+<div class="book-comments">
+  
+
+
+
+
+</div>
+
+
+<script src="/js/book-post.js"></script>
+          </div>
+        </div>
+
+        <div class="column col-2 hide-lg">
+          <div class="book-toc">
+  <div class="book-tocbot">
   </div>
-  <!-- 
-  
-<nav id="article-nav">
-  
-    <a href="/Vong-doi-cua-mot-React-Component/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Vòng đời của một React Component
-        
+  <div class="book-tocbot-menu">
+    <!-- <a class="book-toc-expand" onclick="expand_toc()">Expand all</a> -->
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+// function expand_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 6,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "collapse_toc()");
+//   b.innerHTML = "Collapse all"
+// }
+
+// function collapse_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 2,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "expand_toc()");
+//   b.innerHTML = "Expand all"
+// }
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/Nhung-diem-danh-dau-khi-tim-hieu-ve-Dart/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Những điểm đánh dấu khi tìm hiểu về Dart</div>
-    </a>
-  
-</nav>
-
-   -->
-</article>
-
-</section>
-      </div>
-      <!-- <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 toandn96<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
-</footer> -->
-    </div>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 
 </html>
