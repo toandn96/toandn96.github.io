@@ -285,7 +285,8 @@ ul li {
   .book-sidebar a {
     color: #2f2f2f; }
   .book-sidebar a:hover {
-    color: gray; }
+    color: gray;
+    text-decoration: underline; }
   .book-sidebar .book-sidebar-current {
     color: #004ed0; }
   .book-sidebar .book-sidebar-logo {
@@ -389,10 +390,10 @@ pre {
     border: 0; }
 
 pre .deletion {
-  background: if false, #fdd, #800000; }
+  background: if true, #fdd, #800000; }
 
 pre .addition {
-  background: if false, #dfd, #008000; }
+  background: if true, #dfd, #008000; }
 
 pre .meta {
   color: #eab700; }
