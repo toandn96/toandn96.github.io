@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico" />
+    
+
+    <title>
+        
+          Cách kiểm tra empty object trong JavaScript - Bookmarks của Tỏn Tỏn
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <!-- Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    <!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('img')
+})
+</script>
+ -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="book-container">
+      <div class="columns">
+        <div class="column col-2 hide-lg config-header">
+          <div class="book-sidebar">
+  <div class="book-sidebar-logo">
+    <picture>
+      <a href="/">
+        <img class="img-header" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png" />
+      </a>
+    </picture>
+  </div>
+  <h4 class="site-meta">
+    <a href="/">Tỏn Tỏn</a>
+  </h4>
+  <div class="sidebar-content">
+    
+  </div>
+  <p><a class="github-link" href="https://github.com/toandn96" target="_blank" rel="noopener">Github</a></p>
+  <p style="width: 50%; padding: 20px 20px 0px 20px;">Bookmarks của Tỏn Tỏn</p>
+  <p style="width: 50%; padding: 0 20px 0px 20px;"><i>"Mình thấy hay hay nên lưu lại sau này thích thì coi thôi :))"</i></p>
+  
+</div>
+        </div>
+
+        <div class="column col-8 col-lg-12 config-main">
+          <div class="book-content">
+            <div class="book-navbar-home">
+              <header class="navbar">
+  <section class="navbar-section">
+    <a href="/"><img class="navbar-icon" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png"></a>
+  </section>
+  <section class="navbar-center">
+    <a href="/">Tỏn Tỏn</a>
+  </section>
+  <section class="navbar-section">
+    <!-- <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label> -->
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
+  </div>
+</div>
+            </div>
+            <div class="book-post">
+  
+  <p style="margin: 0; font-size: 0.8em;">Tags: <span class="article-tag">
+      <a class="article-tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+    </span>
+  </p>
+  
+  <p></p>
+  <h1 style="border: none;">Cách kiểm tra empty object trong JavaScript</h1>
+  <p>Giả sử bạn đang muốn kiểm tra empty object đối với một giá trị cho trước. Với empty object được hiểu như sau:</p>
+<ul>
+<li>Đó là một <a href="https://completejavascript.com/javascript-object-last-but-not-least/" target="_blank" rel="noopener">object</a>.</li>
+<li>Và nó không có một thuộc tính <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties" target="_blank" rel="noopener">enumerable</a> nào cả.</li>
+</ul>
+<p>Tức là nó được biểu diễn như sau:</p>
+<p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const emptyObject</span> = &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Vậy cách để kiểm tra empty object là gì?</p>
+<h2><a href="https://completejavascript.com/kiem-tra-empty-object-trong-javascript#c%C3%A1ch-ki%E1%BB%83m-tra-empty-object-trong-javascript" target="_blank" rel="noopener"></a>Cách kiểm tra empty object trong JavaScript</h2>
+<p>Như mình đã nói ở trên, empty object phải thỏa mãn cả 2 điều kiện: là object và không có thuộc tính enumerable. Vì vậy, mình sẽ kiểm tra từng thành phần như sau.</p>
+<h3><a href="https://completejavascript.com/kiem-tra-empty-object-trong-javascript#ki%E1%BB%83m-tra-l%C3%A0-object" target="_blank" rel="noopener"></a>Kiểm tra là object</h3>
+<p>Để một giá trị là object thì điều kiện cần là nó phải khác null và khác undefined. Tiếp theo, điều kiện đủ là constructor của nó là Object.</p>
+<p>Ví dụ:</p>
+<p><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>,</span><br><span class="line">  b = <span class="string">'hello'</span>,</span><br><span class="line">  c = [<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  d = <span class="comment">&#123; x: 6 &#125;</span>,</span><br><span class="line">  e = () =&gt; <span class="comment">&#123;&#125;</span>;</span><br><span class="line"></span><br><span class="line">console.log(a<span class="function">.<span class="keyword">constructor</span>);</span> <span class="comment">// Number</span></span><br><span class="line">console.log(b<span class="function">.<span class="keyword">constructor</span>);</span> <span class="comment">// String</span></span><br><span class="line">console.log(c<span class="function">.<span class="keyword">constructor</span>);</span> <span class="comment">// Array</span></span><br><span class="line">console.log(d<span class="function">.<span class="keyword">constructor</span>);</span> <span class="comment">// Object</span></span><br><span class="line">console.log(e<span class="function">.<span class="keyword">constructor</span>);</span> <span class="comment">// Function</span></span><br></pre></td></tr></table></figure></p>
+<p>Như vậy, mình sẽ viết hàm check object như sau:</p>
+<p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isObject = <span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> !!v &amp;&amp; v.<span class="keyword">constructor</span> === Object;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Thử kiểm tra lại xem sao:</p>
+<p><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const a = <span class="number">1</span>,</span><br><span class="line">  b = 'hello',</span><br><span class="line">  c = <span class="literal">[<span class="number">1</span>, <span class="number">2</span>]</span>,</span><br><span class="line">  d = &#123; x: <span class="number">6</span> &#125;,</span><br><span class="line">  e =<span class="function"> <span class="params">()</span> =&gt;</span> &#123;&#125;,</span><br><span class="line">  f = null,</span><br><span class="line">  g = undefined;</span><br><span class="line"></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">a</span>)</span>); <span class="comment">// false</span></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">b</span>)</span>); <span class="comment">// false</span></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">c</span>)</span>); <span class="comment">// false</span></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">d</span>)</span>); <span class="comment">// true</span></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">e</span>)</span>); <span class="comment">// false</span></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">f</span>)</span>); <span class="comment">// false</span></span><br><span class="line">console.log(is<span class="constructor">Object(<span class="params">g</span>)</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<p>Kết quả hiện thị bên trên là đúng với yêu cầu. Tiếp theo mình sẽ triển khai phần kiểm tra object là empty.</p>
+<h3><a href="https://completejavascript.com/kiem-tra-empty-object-trong-javascript#ki%E1%BB%83m-tra-object-l%C3%A0-empty" target="_blank" rel="noopener"></a>Kiểm tra object là empty</h3>
+<p>Để kiểm tra object là empty trong <a href="https://completejavascript.com/tag/es6" target="_blank" rel="noopener">ES6</a>, mình sẽ sử dụng phương thức <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys" target="_blank" rel="noopener">Object.keys()</a>. Phương thức này trả về một mảng chứa tất cả các thuộc tính enumerable của object.</p>
+<p>Vì vậy, nếu kết quả trả về là mảng rỗng thì suy ra object đó không chứa thuộc tính enumerable nào.</p>
+<p>Ví dụ:</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;&#125;,</span><br><span class="line">  b = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  c = &#123; <span class="attr">m</span>: <span class="string">'a'</span>, <span class="attr">n</span>: <span class="string">'b'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(a)); <span class="comment">// []</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(b)); <span class="comment">// ["x"]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(c)); <span class="comment">// ["m", "n"]</span></span><br></pre></td></tr></table></figure></p>
+<p>Bây giờ, mình sẽ viết hàm kiểm tra object có empty hay không như sau:</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isEmpty = <span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.keys(v).length === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Kiểm tra lại phương thức trên:</p>
+<p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const a = &#123;&#125;,</span><br><span class="line">  b = &#123; x: <span class="number">1</span> &#125;,</span><br><span class="line">  c = &#123; m: <span class="string">'a'</span>, n: <span class="string">'b'</span> &#125;;</span><br><span class="line"></span><br><span class="line">console.log(isEmpty(a)); // <span class="keyword">true</span></span><br><span class="line">console.log(isEmpty(b)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(c)); // <span class="keyword">false</span></span><br></pre></td></tr></table></figure></p>
+<p>Kết quả lần này lại đúng như mong đợi.</p>
+<h3><a href="https://completejavascript.com/kiem-tra-empty-object-trong-javascript#t%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1ch-ki%E1%BB%83m-tra-empty-object-trong-javascript" target="_blank" rel="noopener"></a>Tổng hợp cách kiểm tra empty object trong JavaScript</h3>
+<p>Kết hợp 2 đoạn kiểm tra trên, mình suy ra <a href="https://completejavascript.com/tim-hieu-function-javascript/" target="_blank" rel="noopener">hàm</a> để kiểm tra empty object trong JavaScript là:</p>
+<p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isEmptyObject = <span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> !!v &amp;&amp; v.<span class="keyword">constructor</span> === Object &amp;&amp; Object.keys(<span class="params">v</span>).length === 0;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Ví dụ:</p>
+<p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const a = <span class="number">1</span>,</span><br><span class="line">  b = <span class="string">'hello'</span>,</span><br><span class="line">  c = [<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  d = &#123;&#125;,</span><br><span class="line">  e = () =&gt; &#123;&#125;,</span><br><span class="line">  f = <span class="keyword">null</span>,</span><br><span class="line">  g = undefined,</span><br><span class="line">  h = &#123; a: <span class="number">1</span>, b: <span class="number">2</span>, c: <span class="string">'3'</span> &#125;;</span><br><span class="line"></span><br><span class="line">console.log(isEmpty(a)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(b)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(c)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(d)); // <span class="keyword">true</span></span><br><span class="line">console.log(isEmpty(e)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(f)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(g)); // <span class="keyword">false</span></span><br><span class="line">console.log(isEmpty(h)); // <span class="keyword">false</span></span><br></pre></td></tr></table></figure></p>
+<p>Nguồn: https://completejavascript.com/kiem-tra-empty-object-trong-javascript</p>
+
+</div>
+
+
+<div class="book-comments">
+  
+<script src="https://utteranc.es/client.js"
+        repo="toandn96/toandn96.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+</div>
+
+
+<script src="/js/book-post.js"></script>
+          </div>
+        </div>
+
+        <div class="column col-2 hide-lg">
+          <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <div class="book-tocbot-menu">
+    <!-- <a class="book-toc-expand" onclick="expand_toc()">Expand all</a> -->
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+// function expand_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 6,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "collapse_toc()");
+//   b.innerHTML = "Collapse all"
+// }
+
+// function collapse_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 2,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "expand_toc()");
+//   b.innerHTML = "Expand all"
+// }
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

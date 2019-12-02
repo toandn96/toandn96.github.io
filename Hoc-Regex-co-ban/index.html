@@ -100,115 +100,143 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
             </div>
-            
-<div class="book-post">
+            <div class="book-post">
+  
+  <p style="margin: 0; font-size: 0.8em;">Tags: <span class="article-tag">
+      <a class="article-tag-link" href="/tags/Regex/" rel="tag">Regex</a>
+    </span>
+  </p>
+  
+  <p></p>
   <h1 style="border: none;">Học Regex cơ bản</h1>
-  <p>Bài viết được dịch từ <a href="https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285" target="_blank" rel="noopener">https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285</a></p>
-<p>Regular expressions (regex or regexp) cực kỳ hữu ích trong việc trích xuất thông tin từ 1 đoạn text. Nó tìm kiếm những ký tự trong đoạn text phù hợp với một quy tắc cụ thể, thường gọi là search pattern. Và học regex chính là việc học cách viết ra những search pattern đó.</p>
+  <p>Bài viết được dịch từ <a href="https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285" target="_blank" rel="noopener">https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285</a></p>
+<p>Regular expressions (regex or regexp) cực kỳ hữu ích trong việc trích xuất thông tin từ 1 đoạn text. Nó tìm kiếm những ký tự trong đoạn text phù hợp với một quy tắc cụ thể, thường gọi là search pattern. Và học regex chính là việc học cách viết ra những search pattern đó.</p>
 <p>Ứng dụng của regex rất da dạng, từ validate, phân tích và thay thế ký tự chong chuỗi, chuyển dữ liệu sang một định dạng khác, trích xuất data của một trang web ..</p>
-<p>Một trong những điều thú vị của regex là bạn chỉ cần học một lần và có thể sử dụng ở hầu hết các ngôn ngữ lập trình(JavaScript, Java, VB, C #, C / C++, Python, Perl, Ruby, Delphi, R, Tcl…) và cú pháp cơ bản là giống nhau ở các ngôn ngữ lập trình, chỉ có sự khác biệt nhỏ ở những cú pháp nâng cao.</p>
+<p>Một trong những điều thú vị của regex là bạn chỉ cần học một lần và có thể sử dụng ở hầu hết các ngôn ngữ lập trình(JavaScript, Java, VB, C #, C / C++, Python, Perl, Ruby, Delphi, R, Tcl...) và cú pháp cơ bản là giống nhau ở các ngôn ngữ lập trình, chỉ có sự khác biệt nhỏ ở những cú pháp nâng cao.</p>
 <p>Trước tiên hãy bắt đầu bằng một số ví dụ cơ bản. Trong quá trình tìm hiểu, các bạn hãy vào một số trang regex online để thực hành những ví dụ, như thế sẽ dễ hiểu hơn nhiều.</p>
-<h1 id="Quy-tac-co-ban"><a href="#Quy-tac-co-ban" class="headerlink" title="Quy tắc cơ bản"></a>Quy tắc cơ bản</h1><h2 id="Ky-tu-the-hien-vi-tri-va"><a href="#Ky-tu-the-hien-vi-tri-va" class="headerlink" title="Ký tự thể hiện vị trí  ^ và $"></a>Ký tự thể hiện vị trí  <code>^ và $</code></h2><p>Chúng ta sẽ làm ví dụng với chuỗi <code>The end</code></p>
+<h1>Quy tắc cơ bản</h1>
+<h2>Ký tự thể hiện vị trí  <code>^ và $</code></h2>
+<p>Chúng ta sẽ làm ví dụng với chuỗi <code>The end</code></p>
 <ul>
-<li><code>^The</code> Khớp với từ <code>The</code> nhưng nó phải đứng ở đầu chuỗi -&gt; <a href="https://regex101.com/r/cO8lqs/2" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>end$</code> Khớp với từ <code>end</code> nhưng nó phải đứng ở cuối chuỗi</li>
-<li><code>^The end$</code> Khớp với chuỗi <code>The end</code></li>
-<li><code>end</code> Khớp với từ <code>end</code> ở bất kỳ vị trí nào</li>
+<li><code>^The</code> Khớp với từ <code>The</code> nhưng nó phải đứng ở đầu chuỗi -&gt; <a href="https://regex101.com/r/cO8lqs/2" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>end$</code> Khớp với từ <code>end</code> nhưng nó phải đứng ở cuối chuỗi</li>
+<li><code>^The end$</code> Khớp với chuỗi <code>The end</code></li>
+<li><code>end</code> Khớp với từ <code>end</code> ở bất kỳ vị trí nào</li>
 </ul>
-<h2 id="Ky-tu-the-hien-so-luong-va"><a href="#Ky-tu-the-hien-so-luong-va" class="headerlink" title="Ký tự thể hiện số lượng  * + ? và {}"></a>Ký tự thể hiện số lượng  <code>* + ? và {}</code></h2><p>Chuỗi ví dụ <code>abc</code></p>
+<h2>Ký tự thể hiện số lượng  <code>* + ? và {}</code></h2>
+<p>Chuỗi ví dụ <code>abc</code></p>
 <ul>
-<li><code>abc*</code> Khớp với từ <code>ab</code> và có nhiều hoặc không có ký tự <code>c</code> đắng sau <code>(ab, abc ,abccccc...)</code> -&gt; <a href="https://regex101.com/r/cO8lqs/1" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>abc+</code> Khớp với từ <code>ab</code> và có một hoặc nhiều ký tự <code>c</code> đằng sau <code>(abc, abcccc....)</code></li>
-<li><code>abc?</code> Khớp với từ <code>ab</code> và có 1 hoặc không có ký tự <code>c</code> đắng sau<code>(ab, abc)</code></li>
-<li><code>abc{2}</code> Khớp với từ <code>ab</code> và có 2 ký tự <code>c</code> đắng sau<code>(abcc)</code></li>
-<li><code>abc{2,}</code> Khớp với từ <code>ab</code> và có từ 2 ký tự <code>c</code> đắng sau<code>(abcc, abccccc...)</code> *<code>abc{2,5}</code> Khớp với từ <code>ab</code>và có từ 2 đến 5 ký tự <code>c</code> đắng sau<code>(abcc,baccc..)</code></li>
-<li><code>a(bc)*</code> Khớp với từ <code>a</code> và có nhiều hoặc không có ký tự <code>bc</code> đắng sau<code>(a, abc ,abcbc...)</code></li>
-<li><code>a(bc){2,5}</code> Khớp với từ <code>a</code> và có từ 2 đến 5 ký tự <code>bc</code> đắng sau<code>(abcbc, abcbc....)</code></li>
+<li><code>abc*</code> Khớp với từ <code>ab</code> và có nhiều hoặc không có ký tự <code>c</code> đắng sau <code>(ab, abc ,abccccc...)</code> -&gt; <a href="https://regex101.com/r/cO8lqs/1" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>abc+</code> Khớp với từ <code>ab</code> và có một hoặc nhiều ký tự <code>c</code> đằng sau <code>(abc, abcccc....)</code></li>
+<li><code>abc?</code> Khớp với từ <code>ab</code> và có 1 hoặc không có ký tự <code>c</code> đắng sau<code>(ab, abc)</code></li>
+<li><code>abc{2}</code> Khớp với từ <code>ab</code> và có 2 ký tự <code>c</code> đắng sau<code>(abcc)</code></li>
+<li><code>abc{2,}</code> Khớp với từ <code>ab</code> và có từ 2 ký tự <code>c</code> đắng sau<code>(abcc, abccccc...)</code> *<code>abc{2,5}</code> Khớp với từ <code>ab</code>và có từ 2 đến 5 ký tự <code>c</code> đắng sau<code>(abcc,baccc..)</code></li>
+<li><code>a(bc)*</code> Khớp với từ <code>a</code> và có nhiều hoặc không có ký tự <code>bc</code> đắng sau<code>(a, abc ,abcbc...)</code></li>
+<li><code>a(bc){2,5}</code> Khớp với từ <code>a</code> và có từ 2 đến 5 ký tự <code>bc</code> đắng sau<code>(abcbc, abcbc....)</code></li>
 </ul>
-<h2 id="Toan-tu-hoac-va"><a href="#Toan-tu-hoac-va" class="headerlink" title="Toán tử hoặc | và []"></a>Toán tử hoặc <code>| và []</code></h2><ul>
-<li><code>a(b|c)</code> Khớp với từ ‘a’ và có 1 ký tự <code>c</code> hoặc <code>b</code> đắng sau<code>(ab, ac)</code> -&gt; <a href="https://regex101.com/r/cO8lqs/3" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>a[bc]</code> Kết quả như trên</li>
-</ul>
-<h2 id="Ky-tu-phan-loai-d-w-s-va"><a href="#Ky-tu-phan-loai-d-w-s-va" class="headerlink" title="Ký tự phân loại \d \w \s và ."></a>Ký tự phân loại <code>\d \w \s và .</code></h2><ul>
-<li><code>\d</code> Khớp với 1 ký tự số(từ 0 đến 9) -&gt; <a href="https://regex101.com/r/cO8lqs/4" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>\w</code> Khớp với bất kỳ ký 1 tự số hoặc chữ hoặc dấu gạch dưới <code>_</code></li>
-<li><code>\s</code> Khớp với ký tự khoảng trăng(bap gồm cả tab, xuống dòng)</li>
-<li><code>.</code> Khớp với bất kỳ ký tự nào -&gt; <a href="https://regex101.com/r/cO8lqs/5" target="_blank" rel="noopener">Try it!</a></li>
-</ul>
-<p><code>\d, \w, \s</code> còn có phủ định của nó <code>\D, \W, \S</code></p>
+<table>
+<thead>
+<tr>
+<th>Toán tử hoặc <code>| và []</code></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
 <ul>
-<li><code>\D</code> Khớp với 1 ký tự không phải là số-&gt; <a href="https://regex101.com/r/cO8lqs/6" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>\W</code> Khớp với bất kỳ ký tự không phải là 1 số, chữ hoặc dấu gạch dưới ‘_’</li>
-<li><code>\S</code> Khớp với ký tự không phải là khoảng trăng(bap gồm cả tab, xuống dòng)</li>
+<li><code>a(b|c)</code> Khớp với từ 'a' và có 1 ký tự <code>c</code> hoặc <code>b</code> đắng sau<code>(ab, ac)</code> -&gt; <a href="https://regex101.com/r/cO8lqs/3" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>a[bc]</code> Kết quả như trên</li>
 </ul>
-<p>Bạn cũng có thể chọn riêng những ký tự không nhìn thấy như xuống dòng <code>\n</code>, tabs <code>\t</code>, carriage returns(ký tự đưa con trỏ về đầu dòng) <code>\r</code></p>
-<h2 id="Flags"><a href="#Flags" class="headerlink" title="Flags"></a>Flags</h2><p>Chúng ta sử dụng regex nhưng thường không chú ý đến một khái niệm cơ bản là flag(cờ). Biểu thức chính quy có dạng <code>/abc/</code> và sau nó là flag với 3 giá trị sau</p>
+<h2>Ký tự phân loại <code>\d \w \s và .</code></h2>
 <ul>
-<li>g (global) tìm tất cả các đoạn ký tự khớp với mẫu tìm kiếm, nếu không có cờ <code>g</code> thì việc tìm kiếm sẽ dừng lại ở lần khớp đầu tiên.</li>
-<li>m (multi line) khi có <code>^ và $</code> thì <code>^</code> sẽ là bắt đầu 1 dòng và <code>$</code> là kết thúc 1 dòng trong chuỗi, nếu không có cờ <code>m</code> thì <code>^ và $</code> là bắt đầu và kết thúc của cả chuỗi</li>
-<li>i (insensitive) không phân biệt chữ hoa chữ thường(vd:<code>aBc</code> sẽ khớp với pattern <code>/abc/i</code> )</li>
+<li><code>\d</code> Khớp với 1 ký tự số(từ 0 đến 9) -&gt; <a href="https://regex101.com/r/cO8lqs/4" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>\w</code> Khớp với bất kỳ ký 1 tự số hoặc chữ hoặc dấu gạch dưới <code>_</code></li>
+<li><code>\s</code> Khớp với ký tự khoảng trăng(bap gồm cả tab, xuống dòng)</li>
+<li><code>.</code> Khớp với bất kỳ ký tự nào -&gt; <a href="https://regex101.com/r/cO8lqs/5" target="_blank" rel="noopener">Try it!</a></li>
 </ul>
-<h1 id="Quy-tac-nang-cao"><a href="#Quy-tac-nang-cao" class="headerlink" title="Quy tắc nâng cao"></a>Quy tắc nâng cao</h1><h2 id="Ky-hieu-phan-nhom"><a href="#Ky-hieu-phan-nhom" class="headerlink" title="Ký hiệu phân nhóm ()"></a>Ký hiệu phân nhóm <code>()</code></h2><ul>
-<li><code>a(bc)</code> trong cặp dấu ngoặc là một group, giá trị trong group sẽ được capture lại <a href="https://regex101.com/r/cO8lqs/11" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>a(?:bc)*</code> giá trị trong group sẽ không được capture lại <a href="https://regex101.com/r/cO8lqs/12" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>a(?&lt;foo&gt;bc)</code> đặt tên cho group, mặc địng group sẽ có chỉ số là group[0], group[1], trường hợp này group sẽ là group[foo]<a href="https://regex101.com/r/cO8lqs/12" target="_blank" rel="noopener"></a></li>
+<p><code>\d, \w, \s</code> còn có phủ định của nó <code>\D, \W, \S</code></p>
+<ul>
+<li><code>\D</code> Khớp với 1 ký tự không phải là số-&gt; <a href="https://regex101.com/r/cO8lqs/6" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>\W</code> Khớp với bất kỳ ký tự không phải là 1 số, chữ hoặc dấu gạch dưới '_'</li>
+<li><code>\S</code> Khớp với ký tự không phải là khoảng trăng(bap gồm cả tab, xuống dòng)</li>
 </ul>
-<p>Đây là một quy tắc rất hữu ích nếu bạn bần trích xuất data từ một chuỗi. Bất kì thông tin nào được match sẽ được trích xuất vào trong một mảng, và ta có thể lấy nó thông qua chỉ mục của các group hoặc tên của group nếu đặt tên. Nếu không muốn bắt thông tin trong group, ta dùng <code>?:</code>, khi đó group chỉ đơn thuần là một điều kiện và giá trị trong đó xẽ không được trích xuất.</p>
-<h2 id="Ki-hieu-chi-pham-vi"><a href="#Ki-hieu-chi-pham-vi" class="headerlink" title="Kí hiệu chỉ phạm vi []"></a>Kí hiệu chỉ phạm vi <code>[]</code></h2><ul>
-<li><code>[abc]</code> khớp với 1 ký tự a hoặc <code>b</code> hoặc <code>c</code> -&gt; tương tự cách dùng <code>a|b|c</code> <a href="https://regex101.com/r/cO8lqs/7" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>[a-c]</code> tác dụng như trên</li>
-<li><code>[a-fA-F0-9]</code> khớp với 1 ký tự nằm trong khoảng từ <code>a -&gt; z</code> hoặc <code>A -&gt; Z</code> hoặc <code>0 -&gt; 9</code>(đây chính là đoạn regex để bắt ký tự trong hệ HEX) <a href="https://regex101.com/r/cO8lqs/22" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>[0-9]%</code> khớp với 1 ký tự từ <code>0 -&gt;9</code> và theo sau nó là ký tự <code>%</code></li>
-<li><code>[^a-zA-Z]</code> khớp với ký tự không nằm nằm trong <code>a -&gt; z</code> và <code>A -&gt; Z</code> <a href="https://regex101.com/r/cO8lqs/10" target="_blank" rel="noopener">Try it!</a></li>
+<p>Bạn cũng có thể chọn riêng những ký tự không nhìn thấy như xuống dòng <code>\n</code>, tabs <code>\t</code>, carriage returns(ký tự đưa con trỏ về đầu dòng) <code>\r</code></p>
+<h2>Flags</h2>
+<p>Chúng ta sử dụng regex nhưng thường không chú ý đến một khái niệm cơ bản là flag(cờ). Biểu thức chính quy có dạng <code>/abc/</code> và sau nó là flag với 3 giá trị sau</p>
+<ul>
+<li>g (global) tìm tất cả các đoạn ký tự khớp với mẫu tìm kiếm, nếu không có cờ <code>g</code> thì việc tìm kiếm sẽ dừng lại ở lần khớp đầu tiên.</li>
+<li>m (multi line) khi có <code>^ và $</code> thì <code>^</code> sẽ là bắt đầu 1 dòng và <code>$</code> là kết thúc 1 dòng trong chuỗi, nếu không có cờ <code>m</code> thì <code>^ và $</code> là bắt đầu và kết thúc của cả chuỗi</li>
+<li>i (insensitive) không phân biệt chữ hoa chữ thường(vd:<code>aBc</code> sẽ khớp với pattern <code>/abc/i</code> )</li>
+</ul>
+<h1>Quy tắc nâng cao</h1>
+<h2>Ký hiệu phân nhóm <code>()</code></h2>
+<ul>
+<li><code>a(bc)</code> trong cặp dấu ngoặc là một group, giá trị trong group sẽ được capture lại <a href="https://regex101.com/r/cO8lqs/11" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>a(?:bc)*</code> giá trị trong group sẽ không được capture lại <a href="https://regex101.com/r/cO8lqs/12" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>a(?&lt;foo&gt;bc)</code> đặt tên cho group, mặc địng group sẽ có chỉ số là group[0], group[1], trường hợp này group sẽ là group[foo]<a href="https://regex101.com/r/cO8lqs/12" target="_blank" rel="noopener"></a></li>
+</ul>
+<p>Đây là một quy tắc rất hữu ích nếu bạn bần trích xuất data từ một chuỗi. Bất kì thông tin nào được match sẽ được trích xuất vào trong một mảng, và ta có thể lấy nó thông qua chỉ mục của các group hoặc tên của group nếu đặt tên. Nếu không muốn bắt thông tin trong group, ta dùng <code>?:</code>, khi đó group chỉ đơn thuần là một điều kiện và giá trị trong đó xẽ không được trích xuất.</p>
+<h2>Kí hiệu chỉ phạm vi <code>[]</code></h2>
+<ul>
+<li><code>[abc]</code> khớp với 1 ký tự a hoặc <code>b</code> hoặc <code>c</code> -&gt; tương tự cách dùng <code>a|b|c</code> <a href="https://regex101.com/r/cO8lqs/7" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>[a-c]</code> tác dụng như trên</li>
+<li><code>[a-fA-F0-9]</code> khớp với 1 ký tự nằm trong khoảng từ <code>a -&gt; z</code> hoặc <code>A -&gt; Z</code> hoặc <code>0 -&gt; 9</code>(đây chính là đoạn regex để bắt ký tự trong hệ HEX) <a href="https://regex101.com/r/cO8lqs/22" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>[0-9]%</code> khớp với 1 ký tự từ <code>0 -&gt;9</code> và theo sau nó là ký tự <code>%</code></li>
+<li><code>[^a-zA-Z]</code> khớp với ký tự không nằm nằm trong <code>a -&gt; z</code> và <code>A -&gt; Z</code> <a href="https://regex101.com/r/cO8lqs/10" target="_blank" rel="noopener">Try it!</a></li>
 </ul>
 <blockquote>
-<p>Chú ý: Chức năng của một ký tự đặc biệt nào đó sẽ thay đổi khi nó nằm ở các vị trí khác nhau trong partten. ở ví dụ cuối cùng, ký tự <code>^</code> nằm trong [] thể hiện sự phủ định, chứ không phải xác định bắt đầu chuỗi. Nên cần chú ý vị trí của ký tự đặc biệt để biết chức năng của nó</p>
+<p>Chú ý: Chức năng của một ký tự đặc biệt nào đó sẽ thay đổi khi nó nằm ở các vị trí khác nhau trong partten. ở ví dụ cuối cùng, ký tự <code>^</code> nằm trong [] thể hiện sự phủ định, chứ không phải xác định bắt đầu chuỗi. Nên cần chú ý vị trí của ký tự đặc biệt để biết chức năng của nó</p>
 </blockquote>
-<h2 id="Greedy-and-Lazy-match"><a href="#Greedy-and-Lazy-match" class="headerlink" title="Greedy and Lazy match"></a>Greedy and Lazy match</h2><p>Cái này khá khó để diễn tả bằng tiếng việt nên mình để nguyên tiếng anh.</p>
+<h2>Greedy and Lazy match</h2>
+<p>Cái này khá khó để diễn tả bằng tiếng việt nên mình để nguyên tiếng anh.</p>
 <p>Những ký tự chỉ số lượng ( * + {}) sẽ cố gắng match một đoạn string dài nhất chính vì thế trong tiếng anh nó được gọi là Greedy- sự tham lam</p>
-<p>Ví dụ: xét chuỗi <code>&lt;div&gt;Greedy&lt;/div&gt;&lt;div&gt;Lazy&lt;/div&gt;match</code></p>
-<p><code>&lt;.+&gt;</code> sẽ match <code>&lt;div&gt;Greedy&lt;/div&gt;&lt;div&gt;Lazy&lt;/div&gt;</code> trong chuỗi <code>&lt;div&gt;Greedy&lt;/div&gt;&lt;div&gt;Lazy&lt;/div&gt;match</code>.</p>
-<p>Vì nó sẽ match kí tự <code>&lt;</code> đầu tiên cho đến kí tự <code>&gt;</code> cuối cùng nên chỉ có một lần match duy nhất.</p>
-<p>Dấu <code>?</code> sẽ làm biểu thức trở nên lười biếng hơn (Lazy), nghĩa là sẽ match với số lần càng nhiều càng tốt.</p>
-<p><code>&lt;.+?&gt;</code> sẽ match toàn bộ những thẻ div riêng lẻ và trong ví dụ trên nó sẽ match 4 lần tương ứng với 2 cặp thẻ div. <a href="https://regex101.com/r/cO8lqs/24" target="_blank" rel="noopener">Try it!</a></p>
+<p>Ví dụ: xét chuỗi <code>&lt;div&gt;Greedy&lt;/div&gt;&lt;div&gt;Lazy&lt;/div&gt;match</code></p>
+<p><code>&lt;.+&gt;</code> sẽ match <code>&lt;div&gt;Greedy&lt;/div&gt;&lt;div&gt;Lazy&lt;/div&gt;</code> trong chuỗi <code>&lt;div&gt;Greedy&lt;/div&gt;&lt;div&gt;Lazy&lt;/div&gt;match</code>.</p>
+<p>Vì nó sẽ match kí tự <code>&lt;</code> đầu tiên cho đến kí tự <code>&gt;</code> cuối cùng nên chỉ có một lần match duy nhất.</p>
+<p>Dấu <code>?</code> sẽ làm biểu thức trở nên lười biếng hơn (Lazy), nghĩa là sẽ match với số lần càng nhiều càng tốt.</p>
+<p><code>&lt;.+?&gt;</code> sẽ match toàn bộ những thẻ div riêng lẻ và trong ví dụ trên nó sẽ match 4 lần tương ứng với 2 cặp thẻ div. <a href="https://regex101.com/r/cO8lqs/24" target="_blank" rel="noopener">Try it!</a></p>
 <blockquote>
-<p>Có một cách khác để thực hiện việc nàyc <code>&lt;[^&lt;&gt;]+&gt;</code>, các này sẽ tối ưu hơn là dùng <code>.</code></p>
+<p>Có một cách khác để thực hiện việc nàyc <code>&lt;[^&lt;&gt;]+&gt;</code>, các này sẽ tối ưu hơn là dùng <code>.</code></p>
 <p>=&gt; Có nhiều cách để giải quyết một vấn đề với regex, nên hãy chọn cách tối ưu nhất nhé.</p>
 </blockquote>
-<h1 id="Nang-cao-hon"><a href="#Nang-cao-hon" class="headerlink" title="Nâng cao hơn"></a>Nâng cao hơn</h1><h2 id="Boundaries-b-va-B"><a href="#Boundaries-b-va-B" class="headerlink" title="Boundaries  \b và \B"></a>Boundaries  <code>\b và \B</code></h2><ul>
-<li><code>\babc\b</code> match những từ <code>abc</code> <a href="https://regex101.com/r/cO8lqs/25" target="_blank" rel="noopener">Try it!</a></li>
-</ul>
-<p>Từ <code>abc</code> trong chuỗi phải là một từ riêng,nghĩa là nó phải được phân cách giữa các từ khác bằng khoảng trắng hoặc xuống dòng.</p>
+<h1>Nâng cao hơn</h1>
+<h2>Boundaries  <code>\b và \B</code></h2>
 <ul>
-<li><code>\Babc\B</code> math những từ mà giữa nó có cụm <code>abc</code><a href="https://regex101.com/r/cO8lqs/26" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>\babc\b</code> match những từ <code>abc</code> <a href="https://regex101.com/r/cO8lqs/25" target="_blank" rel="noopener">Try it!</a></li>
 </ul>
-<p>\B là phủ định của \b, nghĩa là trước và sau <code>abc</code> không được là kí tự khoảng trắng hoặc xuống dòng.</p>
-<h2 id="Back-references-1"><a href="#Back-references-1" class="headerlink" title="Back-references  \1"></a>Back-references  <code>\1</code></h2><ul>
-<li><code>([abc])\1</code> sử dụng <code>\1</code> sẽ match khi có 1 kí tự tiếp theo giống với kí tự được match trong group đầu tiên. Hơi khó hiểu, bạn xem ví dụ sẽ rõ hơn nhé <a href="https://regex101.com/r/cO8lqs/14" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>([abc])([de])\2\1</code> Chúng ta có thể xử dụng <code>\2,\3</code> để math kí tự giống với group thứ 2, 3 <a href="https://regex101.com/r/cO8lqs/15" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>(?&lt;foo&gt;[abc])\k&lt;foo&gt;</code> Có thể đặt tên cho group thay cho số thứ tự <a href="https://regex101.com/r/cO8lqs/16" target="_blank" rel="noopener">Try it!</a></li>
+<p>Từ <code>abc</code> trong chuỗi phải là một từ riêng,nghĩa là nó phải được phân cách giữa các từ khác bằng khoảng trắng hoặc xuống dòng.</p>
+<ul>
+<li><code>\Babc\B</code> math những từ mà giữa nó có cụm <code>abc</code><a href="https://regex101.com/r/cO8lqs/26" target="_blank" rel="noopener">Try it!</a></li>
 </ul>
-<h2 id="Look-ahead-and-Look-behind-—-va-lt"><a href="#Look-ahead-and-Look-behind-—-va-lt" class="headerlink" title="Look-ahead and Look-behind —(?=) và (?&lt;=)"></a>Look-ahead and Look-behind —<code>(?=) và (?&lt;=)</code></h2><ul>
-<li><code>d(?!r)</code> match với <code>d</code> và theo sau <code>d</code> là <code>r</code>, nhưng <code>r</code> sẽ không nằm trong data được match <a href="https://regex101.com/r/cO8lqs/18" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>(?&lt;!r)d</code> match với <code>d</code> và trước <code>d</code> là <code>r</code> , tất nhiên <code>r</code> cũng hông nằm trong data được match <a href="https://regex101.com/r/cO8lqs/19" target="_blank" rel="noopener">Try it!</a></li>
+<p>\B là phủ định của \b, nghĩa là trước và sau <code>abc</code> không được là kí tự khoảng trắng hoặc xuống dòng.</p>
+<h2>Back-references  <code>\1</code></h2>
+<ul>
+<li><code>([abc])\1</code> sử dụng <code>\1</code> sẽ match khi có 1 kí tự tiếp theo giống với kí tự được match trong group đầu tiên. Hơi khó hiểu, bạn xem ví dụ sẽ rõ hơn nhé <a href="https://regex101.com/r/cO8lqs/14" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>([abc])([de])\2\1</code> Chúng ta có thể xử dụng <code>\2,\3</code> để math kí tự giống với group thứ 2, 3 <a href="https://regex101.com/r/cO8lqs/15" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>(?&lt;foo&gt;[abc])\k&lt;foo&gt;</code> Có thể đặt tên cho group thay cho số thứ tự <a href="https://regex101.com/r/cO8lqs/16" target="_blank" rel="noopener">Try it!</a></li>
+</ul>
+<h2>Look-ahead and Look-behind ---<code>(?=) và (?&lt;=)</code></h2>
+<ul>
+<li><code>d(?!r)</code> match với <code>d</code> và theo sau <code>d</code> là <code>r</code>, nhưng <code>r</code> sẽ không nằm trong data được match <a href="https://regex101.com/r/cO8lqs/18" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>(?&lt;!r)d</code> match với <code>d</code> và trước <code>d</code> là <code>r</code> , tất nhiên <code>r</code> cũng hông nằm trong data được match <a href="https://regex101.com/r/cO8lqs/19" target="_blank" rel="noopener">Try it!</a></li>
 </ul>
 <p>Nó cũng có toán tử phủ định</p>
 <ul>
-<li><code>d(?!r)</code> match với <code>d</code> và theo sau <code>d</code> là 1 ký tự không phải là <code>r</code>. <a href="https://regex101.com/r/cO8lqs/20" target="_blank" rel="noopener">Try it!</a></li>
-<li><code>(?&lt;!r)d</code> match với <code>d</code> và trước <code>d</code> là 1 ký tự không phải <code>r</code> <a href="https://regex101.com/r/cO8lqs/21" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>d(?!r)</code> match với <code>d</code> và theo sau <code>d</code> là 1 ký tự không phải là <code>r</code>. <a href="https://regex101.com/r/cO8lqs/20" target="_blank" rel="noopener">Try it!</a></li>
+<li><code>(?&lt;!r)d</code> match với <code>d</code> và trước <code>d</code> là 1 ký tự không phải <code>r</code> <a href="https://regex101.com/r/cO8lqs/21" target="_blank" rel="noopener">Try it!</a></li>
 </ul>
-<h1 id="Tong-ket"><a href="#Tong-ket" class="headerlink" title="Tổng kết"></a>Tổng kết</h1><p>Regex có thể làm rất nhiều việc, như dưới đây</p>
+<h1>Tổng kết</h1>
+<p>Regex có thể làm rất nhiều việc, như dưới đây</p>
 <ul>
 <li>Validate dữ liệu</li>
 <li>Trích xuất dữ liệu từ html đơn giản</li>
 <li>Chuyển dữ liệu từ định dạng thô thành một định dạng khác</li>
 <li>Phân tích chuỗi</li>
 <li>Thay thế chuỗi</li>
-<li>highlight text….</li>
+<li>highlight text....</li>
 </ul>
 <p>Tuy regex rất mạnh mẽ và làm được nhiều ciệc, nhưng chúng ta cũng không nên lạm ụng nó quá. ví dụ như nó có thể valiate dữ liệu nhưng đó là những dữ liệu có dạng riêng, còn với dạng cơ bản như email, number thì không nên dùng regex vì hầu hết các framework đều hỗ trợ validate những dữ liệu đó rồi.</p>
 <p>Nên các bạn hãy cân nhắc phương pháp tốt nhất để giảiquyết vấn đề của mình nhé.</p>
-<p>Nguồn: <a href="https://viblo.asia/p/hoc-regex-co-ban-GrLZDvxV5k0" target="_blank" rel="noopener">https://viblo.asia/p/hoc-regex-co-ban-GrLZDvxV5k0</a></p>
+<p>Nguồn: https://viblo.asia/p/hoc-regex-co-ban-GrLZDvxV5k0</p>
 
 </div>
 
