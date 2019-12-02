@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico" />
+    
+
+    <title>
+        
+          Tạo số ngẫu nhiên trong JavaScript - Bookmarks của Tỏn Tỏn
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <!-- Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    <!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('img')
+})
+</script>
+ -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="book-container">
+      <div class="columns">
+        <div class="column col-2 hide-lg config-header">
+          <div class="book-sidebar">
+  <div class="book-sidebar-logo">
+    <picture>
+      <a href="/">
+        <img class="img-header" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png" />
+      </a>
+    </picture>
+  </div>
+  <h4 class="site-meta">
+    <a href="/">Tỏn Tỏn</a>
+  </h4>
+  <div class="sidebar-content">
+    
+  </div>
+  <p><a class="github-link" href="https://github.com/toandn96" target="_blank" rel="noopener">Github</a></p>
+  <p style="width: 50%; padding: 20px 20px 0px 20px;">Bookmarks của Tỏn Tỏn</p>
+  <p style="width: 50%; padding: 0 20px 0px 20px;"><i>"Mình thấy hay hay nên lưu lại sau này thích thì coi thôi :))"</i></p>
+  
+</div>
+        </div>
+
+        <div class="column col-8 col-lg-12 config-main">
+          <div class="book-content">
+            <div class="book-navbar-home">
+              <header class="navbar">
+  <section class="navbar-section">
+    <a href="/"><img class="navbar-icon" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png"></a>
+  </section>
+  <section class="navbar-center">
+    <a href="/">Tỏn Tỏn</a>
+  </section>
+  <section class="navbar-section">
+    <!-- <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label> -->
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
+  </div>
+</div>
+            </div>
+            <div class="book-post">
+  
+  <p style="margin: 0; font-size: 0.8em;">Tags: <span class="article-tag">
+      <a class="article-tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+    </span>
+  </p>
+  
+  <p></p>
+  <h1 style="border: none;">Tạo số ngẫu nhiên trong JavaScript</h1>
+  <p>Có thể bạn đã biết hoặc chưa biết về các cách tạo số ngẫu nhiên trong JavaScript. Tuy nhiên, bài viết này mình sẽ tổng hợp lại một số biến thể của việc tạo số ngẫu nhiên với phương thức Math.random(), cũng như các ứng dụng của chúng trong lập trình JavaScript.</p>
+<h2 id="Cac-phuong-thuc-tao-so-ngau-nhien-trong-JavaScript"><a href="#Cac-phuong-thuc-tao-so-ngau-nhien-trong-JavaScript" class="headerlink" title="Các phương thức tạo số ngẫu nhiên trong JavaScript"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#c%C3%A1c-ph%C6%B0%C6%A1ng-th%E1%BB%A9c-t%E1%BA%A1o-s%E1%BB%91-ng%E1%BA%ABu-nhi%C3%AAn-trong-javascript" target="_blank" rel="noopener"></a>Các phương thức tạo số ngẫu nhiên trong JavaScript</h2><p>Trước khi bắt đầu, mình cùng điểm qua một số <a href="https://completejavascript.com/tim-hieu-function-javascript/" target="_blank" rel="noopener">phương thức</a> tạo số ngẫu nhiên trong JavaScript.</p>
+<p>Theo mình biết, JavaScript có hai phương thức tạo số ngẫu nhiên là: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random" target="_blank" rel="noopener">Math.random()</a> và <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues" target="_blank" rel="noopener">window.crypto.getRandomValues()</a>.</p>
+<p>Trong đó, phương thức Math.random() đơn giản và thường hay được sử dụng. Tuy nhiên, phương thức này không an toàn. Vì vậy, nó không được sử dụng trong những bài toán mà số random liên quan đến bảo mật. Thay vào đó, bạn có thể sử dụng phương thức window.crypto.getRandomValues().</p>
+<blockquote>
+<p>Math.random() does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the window.crypto.getRandomValues() method.</p>
+</blockquote>
+<p>Ngoài hai phương án trên, bạn cũng có thể sử dụng thư viện bên thứ 3 như: <a href="https://www.npmjs.com/package/random-js" target="_blank" rel="noopener">random-js</a> hoặc tự implement riêng một phương thức random theo cách của bạn.</p>
+<p>Tuy nhiên, trong phạm vi bài viết này, mình sẽ lựa chọn phương thức cơ bản và phổ biến nhất để giới thiệu với bạn. Đó là Math.random().</p>
+<h2 id="Co-ban-ve-phuong-thuc-Math-random"><a href="#Co-ban-ve-phuong-thuc-Math-random" class="headerlink" title="Cơ bản về phương thức Math.random()"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#c%C6%A1-b%E1%BA%A3n-v%E1%BB%81-ph%C6%B0%C6%A1ng-th%E1%BB%A9c-mathrandom" target="_blank" rel="noopener"></a>Cơ bản về phương thức Math.random()</h2><p>Phương thức Math.random() trả về số thực trong khoảng lớn hơn hoặc bằng 0 và nhỏ hơn 1.</p>
+<p>Ví dụ:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">number</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;Math.random()&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random number 0:</span> <span class="number">0.6362790593396368</span></span><br><span class="line"><span class="attr">Random number 1:</span> <span class="number">0.20016914689051535</span></span><br><span class="line"><span class="attr">Random number 2:</span> <span class="number">0.9761540182954889</span></span><br><span class="line"><span class="attr">Random number 3:</span> <span class="number">0.7946745165188283</span></span><br><span class="line"><span class="attr">Random number 4:</span> <span class="number">0.5788527311039566</span></span><br><span class="line"><span class="attr">Random number 5:</span> <span class="number">0.4805653264156753</span></span><br><span class="line"><span class="attr">Random number 6:</span> <span class="number">0.12773726117109918</span></span><br><span class="line"><span class="attr">Random number 7:</span> <span class="number">0.04089013569111888</span></span><br><span class="line"><span class="attr">Random number 8:</span> <span class="number">0.23153222422299158</span></span><br><span class="line"><span class="attr">Random number 9:</span> <span class="number">0.5951577021881835</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Như bạn thấy, kết quả bên trên đều là những số thực ngẫu nhiên lớn hơn hoặc bằng 0 và nhỏ hơn 1.</p>
+<p>Nhưng nếu mình muốn tạo số ngẫu nhiên lớn hơn 1 thì sao?</p>
+<h2 id="Cac-bien-the-tao-so-ngau-nhien-trong-JavaScript"><a href="#Cac-bien-the-tao-so-ngau-nhien-trong-JavaScript" class="headerlink" title="Các biến thể tạo số ngẫu nhiên trong JavaScript"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#c%C3%A1c-bi%E1%BA%BFn-th%E1%BB%83-t%E1%BA%A1o-s%E1%BB%91-ng%E1%BA%ABu-nhi%C3%AAn-trong-javascript" target="_blank" rel="noopener"></a>Các biến thể tạo số ngẫu nhiên trong JavaScript</h2><h3 id="Tao-so-ngau-nhien-giua-2-gia-tri"><a href="#Tao-so-ngau-nhien-giua-2-gia-tri" class="headerlink" title="Tạo số ngẫu nhiên giữa 2 giá trị"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#t%E1%BA%A1o-s%E1%BB%91-ng%E1%BA%ABu-nhi%C3%AAn-gi%E1%BB%AFa-2-gi%C3%A1-tr%E1%BB%8B" target="_blank" rel="noopener"></a>Tạo số ngẫu nhiên giữa 2 giá trị</h3><p>Để tạo số ngẫu nhiên giữa 2 giá trị min và max, bạn có thể tùy biến phương thức Math.random() như sau:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getRandomArbitrary = (<span class="built_in">min</span>, <span class="built_in">max</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> Math.<span class="built_in">random</span>() * (<span class="built_in">max</span> - <span class="built_in">min</span>) + <span class="built_in">min</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Ví dụ tạo số ngẫu nhiên từ 5 đến 20:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">number</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;getRandomArbitrary(5,</span> <span class="number">20</span><span class="string">)&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random number 0:</span> <span class="number">17.615712267356862</span></span><br><span class="line"><span class="attr">Random number 1:</span> <span class="number">12.854543118290293</span></span><br><span class="line"><span class="attr">Random number 2:</span> <span class="number">16.70271502093547</span></span><br><span class="line"><span class="attr">Random number 3:</span> <span class="number">6.809095214107975</span></span><br><span class="line"><span class="attr">Random number 4:</span> <span class="number">11.191247745457495</span></span><br><span class="line"><span class="attr">Random number 5:</span> <span class="number">13.933168532576273</span></span><br><span class="line"><span class="attr">Random number 6:</span> <span class="number">11.900280444819856</span></span><br><span class="line"><span class="attr">Random number 7:</span> <span class="number">6.0318833321746625</span></span><br><span class="line"><span class="attr">Random number 8:</span> <span class="number">18.488450961349642</span></span><br><span class="line"><span class="attr">Random number 9:</span> <span class="number">7.360576167002292</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Kết quả in ra là hoàn toàn đúng như yêu cầu. Tuy nhiên, nếu mình lại muốn tạo ra các số nguyên ngẫu nhiên thì sao?</p>
+<h3 id="Tao-so-nguyen-ngau-nhien-giua-2-gia-tri"><a href="#Tao-so-nguyen-ngau-nhien-giua-2-gia-tri" class="headerlink" title="Tạo số nguyên ngẫu nhiên giữa 2 giá trị"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#t%E1%BA%A1o-s%E1%BB%91-nguy%C3%AAn-ng%E1%BA%ABu-nhi%C3%AAn-gi%E1%BB%AFa-2-gi%C3%A1-tr%E1%BB%8B" target="_blank" rel="noopener"></a>Tạo số nguyên ngẫu nhiên giữa 2 giá trị</h3><p>Để tạo số nguyên ngẫu nhiên giữa 2 giá trị, bạn có thể sử dụng kết hợp với phương thức <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor" target="_blank" rel="noopener">Math.floor()</a> như sau với điều kiện min và max cũng là 2 số nguyên:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getRandomInt = (<span class="built_in">min</span>, <span class="built_in">max</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> Math.<span class="built_in">floor</span>(Math.<span class="built_in">random</span>() * (<span class="built_in">max</span> - <span class="built_in">min</span>)) + <span class="built_in">min</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Ví dụ tạo số nguyên ngẫu nhiên từ 5 đến 20:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">number</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;getRandomInt(5,</span> <span class="number">20</span><span class="string">)&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random number 0:</span> <span class="number">11</span></span><br><span class="line"><span class="attr">Random number 1:</span> <span class="number">19</span></span><br><span class="line"><span class="attr">Random number 2:</span> <span class="number">8</span></span><br><span class="line"><span class="attr">Random number 3:</span> <span class="number">11</span></span><br><span class="line"><span class="attr">Random number 4:</span> <span class="number">19</span></span><br><span class="line"><span class="attr">Random number 5:</span> <span class="number">13</span></span><br><span class="line"><span class="attr">Random number 6:</span> <span class="number">18</span></span><br><span class="line"><span class="attr">Random number 7:</span> <span class="number">8</span></span><br><span class="line"><span class="attr">Random number 8:</span> <span class="number">6</span></span><br><span class="line"><span class="attr">Random number 9:</span> <span class="number">17</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Chú ý: Vì phương thức Math.random() trả về số ngẫu nhiên lớn hơn hoặc bằng 0 và nhỏ hơn 1. Nên phương thức getRandomInt() sẽ trả về số nguyên ngẫu nhiên lớn hơn hoặc bằng min và nhỏ hơn max. Để kết quả có thể <em>nhỏ hơn hoặc bằng max</em>, bạn có thể tùy chỉnh như sau:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">getRandomIntInclusive</span> <span class="string">=</span> <span class="string">(min,</span> <span class="string">max)</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">return</span> <span class="string">Math.floor(Math.random()</span> <span class="string">*</span> <span class="string">(max</span> <span class="bullet">-</span> <span class="string">min</span> <span class="string">+</span> <span class="number">1</span><span class="string">))</span> <span class="string">+</span> <span class="string">min;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="string">//</span> <span class="string">Ví</span> <span class="string">dụ</span> <span class="string">tạo</span> <span class="string">số</span> <span class="string">nguyên</span> <span class="string">&gt;=</span> <span class="number">5</span> <span class="string">và</span> <span class="string">&lt;=</span> <span class="number">20</span></span><br><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">number</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;getRandomIntInclusive(5,</span> <span class="number">20</span><span class="string">)&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random number 0:</span> <span class="number">14</span></span><br><span class="line"><span class="attr">Random number 1:</span> <span class="number">16</span></span><br><span class="line"><span class="attr">Random number 2:</span> <span class="number">20</span></span><br><span class="line"><span class="attr">Random number 3:</span> <span class="number">12</span></span><br><span class="line"><span class="attr">Random number 4:</span> <span class="number">13</span></span><br><span class="line"><span class="attr">Random number 5:</span> <span class="number">5</span></span><br><span class="line"><span class="attr">Random number 6:</span> <span class="number">10</span></span><br><span class="line"><span class="attr">Random number 7:</span> <span class="number">17</span></span><br><span class="line"><span class="attr">Random number 8:</span> <span class="number">17</span></span><br><span class="line"><span class="attr">Random number 9:</span> <span class="number">9</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Chú ý: Kết quả chạy của bạn có thể khác với mình và không xuất hiện số 20. Tuy nhiên, đó cũng là điều bình thường. Vì đây là tạo số ngẫu nhiên mà phải không bạn?</p>
+<p>Như vậy là mình đã giới thiệu với bạn một số biến thể của việc tạo số ngẫu nhiên trong JavaScript rồi. Tiếp theo, mình sẽ cùng tìm hiểu về một số ứng dụng của việc tạo số ngẫu nhiên trong JavaScript nhé.</p>
+<h2 id="Mot-so-ung-dung-tao-so-ngau-nhien-trong-JavaScript"><a href="#Mot-so-ung-dung-tao-so-ngau-nhien-trong-JavaScript" class="headerlink" title="Một số ứng dụng tạo số ngẫu nhiên trong JavaScript"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#m%E1%BB%99t-s%E1%BB%91-%E1%BB%A9ng-d%E1%BB%A5ng-t%E1%BA%A1o-s%E1%BB%91-ng%E1%BA%ABu-nhi%C3%AAn-trong-javascript" target="_blank" rel="noopener"></a>Một số ứng dụng tạo số ngẫu nhiên trong JavaScript</h2><h3 id="Tao-ngau-nhien-ma-mau-RGB"><a href="#Tao-ngau-nhien-ma-mau-RGB" class="headerlink" title="Tạo ngẫu nhiên mã màu RGB"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#t%E1%BA%A1o-ng%E1%BA%ABu-nhi%C3%AAn-m%C3%A3-m%C3%A0u-rgb" target="_blank" rel="noopener"></a>Tạo ngẫu nhiên mã màu RGB</h3><p>Mã màu RGB có dạng như sau: <code>rgb(rValue, gValue, bValue)</code>.</p>
+<p>Trong đó, giá trị của <em>rValue, gValue và bValue</em> sẽ lớn hơn hoặc bằng 0 và nhỏ hơn hoặc bằng 255. Vì vậy, mình sẽ sử dụng phương thức getRandomIntInclusive() bên trên như sau:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">getRandomRGB</span> <span class="string">=</span> <span class="string">()</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">const</span> <span class="string">r</span> <span class="string">=</span> <span class="string">getRandomIntInclusive(0,</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line">  <span class="string">const</span> <span class="string">g</span> <span class="string">=</span> <span class="string">getRandomIntInclusive(0,</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line">  <span class="string">const</span> <span class="string">b</span> <span class="string">=</span> <span class="string">getRandomIntInclusive(0,</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line">  <span class="string">return</span> <span class="string">`rgb($&#123;r&#125;,</span> <span class="string">$&#123;g&#125;,</span> <span class="string">$&#123;b&#125;)`;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="string">//</span> <span class="string">Ví</span> <span class="string">dụ:</span></span><br><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">RGB</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;getRandomRGB()&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random RGB 0:</span> <span class="string">rgb(32,</span> <span class="number">78</span><span class="string">,</span> <span class="number">62</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 1:</span> <span class="string">rgb(112,</span> <span class="number">223</span><span class="string">,</span> <span class="number">127</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 2:</span> <span class="string">rgb(117,</span> <span class="number">96</span><span class="string">,</span> <span class="number">219</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 3:</span> <span class="string">rgb(240,</span> <span class="number">55</span><span class="string">,</span> <span class="number">189</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 4:</span> <span class="string">rgb(247,</span> <span class="number">193</span><span class="string">,</span> <span class="number">98</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 5:</span> <span class="string">rgb(116,</span> <span class="number">131</span><span class="string">,</span> <span class="number">163</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 6:</span> <span class="string">rgb(109,</span> <span class="number">7</span><span class="string">,</span> <span class="number">173</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 7:</span> <span class="string">rgb(176,</span> <span class="number">78</span><span class="string">,</span> <span class="number">159</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 8:</span> <span class="string">rgb(230,</span> <span class="number">146</span><span class="string">,</span> <span class="number">59</span><span class="string">)</span></span><br><span class="line"><span class="attr">Random RGB 9:</span> <span class="string">rgb(66,</span> <span class="number">34</span><span class="string">,</span> <span class="number">226</span><span class="string">)</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Tao-ngau-nhien-ma-mau-HEX"><a href="#Tao-ngau-nhien-ma-mau-HEX" class="headerlink" title="Tạo ngẫu nhiên mã màu HEX"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#t%E1%BA%A1o-ng%E1%BA%ABu-nhi%C3%AAn-m%C3%A3-m%C3%A0u-hex" target="_blank" rel="noopener"></a>Tạo ngẫu nhiên mã màu HEX</h3><p>Mã màu HEX có dạng: <code>#RRGGBB</code>.</p>
+<p>Trong đó, thành phần <em>RR</em>, <em>GG</em> và <em>BB</em> bên trên lần lượt là giá trị của <em>rValue, gValue và bValue</em> ở hệ hexa (thập lục phân hay cơ số 16).</p>
+<p>Bạn có thể áp dụng chiến thuật trên bằng cách tạo ngẫu nhiên các giá trị R, G và B bình thường, sau đó format lại chúng thành dạng Hexa như sau:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">getRandomHEX</span> <span class="string">=</span> <span class="string">()</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">const</span> <span class="string">r</span> <span class="string">=</span> <span class="string">getRandomIntInclusive(0,</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line">  <span class="string">const</span> <span class="string">g</span> <span class="string">=</span> <span class="string">getRandomIntInclusive(0,</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line">  <span class="string">const</span> <span class="string">b</span> <span class="string">=</span> <span class="string">getRandomIntInclusive(0,</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line"></span><br><span class="line">  <span class="string">const</span> <span class="string">toHexa</span> <span class="string">=</span> <span class="string">v</span> <span class="string">=&gt;</span> <span class="string">v.toString(16).padStart(2,</span> <span class="string">'0'</span><span class="string">);</span></span><br><span class="line">  <span class="string">return</span> <span class="string">`#$&#123;toHexa(r)&#125;$&#123;toHexa(g)&#125;$&#123;toHexa(b)&#125;`;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="string">//</span> <span class="string">Ví</span> <span class="string">dụ:</span></span><br><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">HEX</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;getRandomHEX()&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random HEX 0:</span> <span class="comment">#522220</span></span><br><span class="line"><span class="attr">Random HEX 1:</span> <span class="comment">#8921ec</span></span><br><span class="line"><span class="attr">Random HEX 2:</span> <span class="comment">#b228f2</span></span><br><span class="line"><span class="attr">Random HEX 3:</span> <span class="comment">#53815c</span></span><br><span class="line"><span class="attr">Random HEX 4:</span> <span class="comment">#3a3cfd</span></span><br><span class="line"><span class="attr">Random HEX 5:</span> <span class="comment">#9d3266</span></span><br><span class="line"><span class="attr">Random HEX 6:</span> <span class="comment">#d04b82</span></span><br><span class="line"><span class="attr">Random HEX 7:</span> <span class="comment">#3760b9</span></span><br><span class="line"><span class="attr">Random HEX 8:</span> <span class="comment">#230ae6</span></span><br><span class="line"><span class="attr">Random HEX 9:</span> <span class="comment">#ee7fc7</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Dưới đây là một ví dụ trực quan về việc tạo ngẫu nhiên mã màu:</p>
+<p><a href="https://codepen.io/completejavascript/pen/ExxPENE" target="_blank" rel="noopener"></a></p>
+<h3 id="Tao-chuoi-string-ngau-nhien"><a href="#Tao-chuoi-string-ngau-nhien" class="headerlink" title="Tạo chuỗi string ngẫu nhiên"></a><a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript#t%E1%BA%A1o-chu%E1%BB%97i-string-ng%E1%BA%ABu-nhi%C3%AAn" target="_blank" rel="noopener"></a>Tạo chuỗi string ngẫu nhiên</h3><p>Từ nãy giờ, mình mới chỉ tạo số ngẫu nhiên trong JavaScript. Tuy nhiên, nếu mình muốn tạo chuỗi string ngẫu nhiên thì sao?</p>
+<p>Đơn giản lắm! Dưới đây là <a href="https://completejavascript.com/tag/thuat-toan" target="_blank" rel="noopener">thuật toán</a> của mình.</p>
+<p>Giả sử mình muốn tạo chuỗi string ngẫu nhiên độ dài L với các ký tự thuộc tập hợp cho trước. Khi đó, các bước làm sẽ như sau:</p>
+<ul>
+<li>Bước 1: Tạo một chuỗi base string chứa tất cả những ký tự đó.</li>
+<li>Bước 2: Tạo số nguyên ngẫu nhiên từ 0 đến độ dài của base string. Đây chính là chỉ số của ký tự trong base string.</li>
+<li>Bước 3: Lấy ra ký tự ứng với chỉ số ngẫu nhiên trên.</li>
+<li>Bước 4: Lặp lại bước 2 và bước 3 cho đến khi lấy ra đủ số ký tự mong muốn</li>
+</ul>
+<p>Cách triển khai:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> baseString =</span><br><span class="line">  <span class="string">'0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getRandomInt = <span class="function">(<span class="params">min, max</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min)) + min;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getRandomString = <span class="function">(<span class="params">length, base</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">const</span> baseLength = base.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> randomIndex = getRandomInt(<span class="number">0</span>, baseLength);</span><br><span class="line">    result += base[randomIndex];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Ví dụ tạo chuỗi string ngẫu nhiên với độ dài 6 với các ký tự từ 0 đến 9, từ a đến z và từ A đến Z:</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> baseString =</span><br><span class="line">  <span class="comment">'0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(`Random <span class="built_in">string</span> $&#123;i&#125;: $&#123;getRandomString(<span class="number">6</span>, baseString)&#125;`);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">0</span>: xFfbgC</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">1</span>: <span class="number">6</span>aiAhV</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">2</span>: ByyZdz</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">3</span>: QbnnvW</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">4</span>: R2nlc7</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">5</span>: zfYRzV</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">6</span>: UixWJ6</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">7</span>: <span class="number">1</span>GrB4B</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">8</span>: <span class="number">8</span>dSpIP</span><br><span class="line">Random <span class="built_in">string</span> <span class="number">9</span>: c13nEG</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>Với cách làm trên, mình có thể áp dụng vào bài toán tạo ngẫu nhiên mã màu HEX bằng cách định nghĩa lại base string là các ký tự từ 0 đến 9 và từ a đến f (hoặc từ A đến F):</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">getRandomHex2</span> <span class="string">=</span> <span class="string">()</span> <span class="string">=&gt;</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">const</span> <span class="string">baseString</span> <span class="string">=</span> <span class="string">'0123456789ABCDEF'</span><span class="string">;</span></span><br><span class="line">  <span class="string">return</span> <span class="string">`#$&#123;getRandomString(6,</span> <span class="string">baseString)&#125;`;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="string">//</span> <span class="string">Ví</span> <span class="string">dụ:</span></span><br><span class="line"><span class="string">for</span> <span class="string">(let</span> <span class="string">i</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">i</span> <span class="string">&lt;</span> <span class="number">10</span><span class="string">;</span> <span class="string">i</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="string">console.log(`Random</span> <span class="string">Hex</span> <span class="string">$&#123;i&#125;:</span> <span class="string">$&#123;getRandomHex2()&#125;`);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="attr">Random Hex 0:</span> <span class="comment">#34A2B9</span></span><br><span class="line"><span class="attr">Random Hex 1:</span> <span class="comment">#DFF7EC</span></span><br><span class="line"><span class="attr">Random Hex 2:</span> <span class="comment">#B77F77</span></span><br><span class="line"><span class="attr">Random Hex 3:</span> <span class="comment">#971AC6</span></span><br><span class="line"><span class="attr">Random Hex 4:</span> <span class="comment">#EC9440</span></span><br><span class="line"><span class="attr">Random Hex 5:</span> <span class="comment">#B7D8C1</span></span><br><span class="line"><span class="attr">Random Hex 6:</span> <span class="comment">#6239AD</span></span><br><span class="line"><span class="attr">Random Hex 7:</span> <span class="comment">#FFEEDB</span></span><br><span class="line"><span class="attr">Random Hex 8:</span> <span class="comment">#DD5B22</span></span><br><span class="line"><span class="attr">Random Hex 9:</span> <span class="comment">#1E0991</span></span><br><span class="line"><span class="string">*/</span></span><br></pre></td></tr></table></figure>
+
+
+<p>Nguồn: <a href="https://completejavascript.com/tao-so-ngau-nhien-trong-javascript" target="_blank" rel="noopener">https://completejavascript.com/tao-so-ngau-nhien-trong-javascript</a></p>
+
+</div>
+
+
+<div class="book-comments">
+  
+<script src="https://utteranc.es/client.js"
+        repo="toandn96/toandn96.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+</div>
+
+
+<script src="/js/book-post.js"></script>
+          </div>
+        </div>
+
+        <div class="column col-2 hide-lg">
+          <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <div class="book-tocbot-menu">
+    <!-- <a class="book-toc-expand" onclick="expand_toc()">Expand all</a> -->
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+// function expand_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 6,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "collapse_toc()");
+//   b.innerHTML = "Collapse all"
+// }
+
+// function collapse_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 2,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "expand_toc()");
+//   b.innerHTML = "Expand all"
+// }
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

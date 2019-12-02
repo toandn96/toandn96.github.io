@@ -105,57 +105,48 @@ document.addEventListener('DOMContentLoaded', function () {
   <p></p>
   <h1 style="border: none;">Vòng đời của một React Component</h1>
   <p><img src="https://viblo.asia/uploads/0572a599-4aef-4c3e-80cf-5a05eae20a13.png" alt=""></p>
-<h2>constructor(props)</h2>
-<ul>
+<h2 id="constructor-props"><a href="#constructor-props" class="headerlink" title="constructor(props)"></a>constructor(props)</h2><ul>
 <li>Được gọi khi một thể hiện của component được tạo ra.</li>
 <li>Có thể dùng để khởi tạo state cho component.</li>
-<li>Cũng có thể dùng để &quot;bind&quot; các hàm của component.</li>
+<li>Cũng có thể dùng để “bind” các hàm của component.</li>
 <li>Nếu phải cài đặt hàm này thì phải khai báo 1 tham số props cho nó và phải gọi super(props) đầu tiên.</li>
 <li>Nếu không làm gì thì không phải cài đặt hàm này.</li>
 </ul>
-<h2>componentWillMount()</h2>
-<ul>
+<h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount()"></a>componentWillMount()</h2><ul>
 <li>Được gọi trước khi render().</li>
 <li>Dùng để đăng ký các sự kiện toàn cục.</li>
 <li>Dựa vào các props để tính toán và set lại state</li>
 </ul>
-<h2>render()</h2>
-<ul>
+<h2 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h2><ul>
 <li>Hàm này bắt buộc phải có trong component().</li>
 <li>Trả về 1 đối tượng JSX (có thể lồng các đối tượng với nhau nhưng phải có 1 đối tượng gói tất cả các đối tượng lại) để hiển thị hoặc null / false nếu không muốn hiển thị gì.</li>
 <li>Không được gọi setState() trong hàm này (cũng như trong các hàm mà hàm này gọi đến), bởi khi gọi setState() thì hàm render sẽ được gọi =&gt; gây ra lặp vô hạn.</li>
 </ul>
-<h2>componentDidMount()</h2>
-<ul>
+<h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount()"></a>componentDidMount()</h2><ul>
 <li>Ngay sau khi hàm render được gọi đến lần đầu tiên chạy xong thì hàm này sẽ được chạy.</li>
 <li>Thường dùng để fetch dữ liệu từ server và sau đó setState để render dữ liệu ra.</li>
 <li>Đến đây thì các phần tử đã được sinh ra rồi, và có thể tương tác với DOM bằng JS trong hàm này.</li>
 </ul>
-<h2>componentWillReceiveProps(nextProps)</h2>
-<ul>
+<h2 id="componentWillReceiveProps-nextProps"><a href="#componentWillReceiveProps-nextProps" class="headerlink" title="componentWillReceiveProps(nextProps)"></a>componentWillReceiveProps(nextProps)</h2><ul>
 <li>Hàm này được chạy khi mà props của component đã được sinh ra có sự thay đổi.</li>
 <li>Phải gọi setState() nếu muốn render lại.</li>
 </ul>
-<h2>shouldComponentUpdate(nextProps, nextState)</h2>
-<ul>
+<h2 id="shouldComponentUpdate-nextProps-nextState"><a href="#shouldComponentUpdate-nextProps-nextState" class="headerlink" title="shouldComponentUpdate(nextProps, nextState)"></a>shouldComponentUpdate(nextProps, nextState)</h2><ul>
 <li>Được gọi trước render.</li>
 <li>Trả về true / false. Nếu false thì sẽ không render lại. Mặc định là true.</li>
 </ul>
-<h2>componentWillUpdate(nextProps, nextState)</h2>
-<ul>
+<h2 id="componentWillUpdate-nextProps-nextState"><a href="#componentWillUpdate-nextProps-nextState" class="headerlink" title="componentWillUpdate(nextProps, nextState)"></a>componentWillUpdate(nextProps, nextState)</h2><ul>
 <li>Được gọi ngay sau shouldComponentUpdate() nếu hàm này trả về true.</li>
 <li>Không gọi setState() trong hàm này bởi hàm này là để chuẩn bị update cho đối tượng chứ không phải tạo ra 1 update mới, sẽ tạo ra lặp vô hạn.</li>
 <li>Hàm render sẽ được gọi ngay sau hàm này.</li>
 </ul>
-<h2>componentDidUpdate(prevProps, prevState)</h2>
-<ul>
+<h2 id="componentDidUpdate-prevProps-prevState"><a href="#componentDidUpdate-prevProps-prevState" class="headerlink" title="componentDidUpdate(prevProps, prevState)"></a>componentDidUpdate(prevProps, prevState)</h2><ul>
 <li>Được gọi ngay sau render() từ lần render thứ 2 trở đi.</li>
 <li>Đây cũng là 1 cơ hội để thao tác với các phần tử DOM bằng JS.</li>
 </ul>
-<h2>componentWillUnmount()</h2>
-<ul>
+<h2 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a>componentWillUnmount()</h2><ul>
 <li>Được gọi khi 1 component được loại bỏ khỏi DOM.</li>
-<li>Thực hiện các thao tác dọn dẹp như huỷ các timer, loại bỏ các phần tử thừa, ...</li>
+<li>Thực hiện các thao tác dọn dẹp như huỷ các timer, loại bỏ các phần tử thừa, …</li>
 </ul>
 
 </div>

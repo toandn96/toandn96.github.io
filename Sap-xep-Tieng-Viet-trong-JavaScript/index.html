@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico" />
+    
+
+    <title>
+        
+          Sắp xếp Tiếng Việt trong JavaScript - Bookmarks của Tỏn Tỏn
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <!-- Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    <!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('img')
+})
+</script>
+ -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="book-container">
+      <div class="columns">
+        <div class="column col-2 hide-lg config-header">
+          <div class="book-sidebar">
+  <div class="book-sidebar-logo">
+    <picture>
+      <a href="/">
+        <img class="img-header" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png" />
+      </a>
+    </picture>
+  </div>
+  <h4 class="site-meta">
+    <a href="/">Tỏn Tỏn</a>
+  </h4>
+  <div class="sidebar-content">
+    
+  </div>
+  <p><a class="github-link" href="https://github.com/toandn96" target="_blank" rel="noopener">Github</a></p>
+  <p style="width: 50%; padding: 20px 20px 0px 20px;">Bookmarks của Tỏn Tỏn</p>
+  <p style="width: 50%; padding: 0 20px 0px 20px;"><i>"Mình thấy hay hay nên lưu lại sau này thích thì coi thôi :))"</i></p>
+  
+</div>
+        </div>
+
+        <div class="column col-8 col-lg-12 config-main">
+          <div class="book-content">
+            <div class="book-navbar-home">
+              <header class="navbar">
+  <section class="navbar-section">
+    <a href="/"><img class="navbar-icon" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png"></a>
+  </section>
+  <section class="navbar-center">
+    <a href="/">Tỏn Tỏn</a>
+  </section>
+  <section class="navbar-section">
+    <!-- <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label> -->
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
+  </div>
+</div>
+            </div>
+            <div class="book-post">
+  
+  <p style="margin: 0; font-size: 0.8em;">Tags: <span class="article-tag">
+      <a class="article-tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+    </span>
+  </p>
+  
+  <p></p>
+  <h1 style="border: none;">Sắp xếp Tiếng Việt trong JavaScript</h1>
+  <p>Sắp xếp là một bài toán không thể thiếu trong lập trình. Tuy nhiên, mình thấy nhiều bạn vẫn đang gặp khó khăn với việc sắp xếp Tiếng việt trong JavaScript. Vì vậy, bài viết này sẽ giới thiệu với bạn về cách mình giải quyết bài toán này.</p>
+<h2 id="Co-ban-ve-ham-sort-trong-JavaScript"><a href="#Co-ban-ve-ham-sort-trong-JavaScript" class="headerlink" title="Cơ bản về hàm sort() trong JavaScript"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#c%C6%A1-b%E1%BA%A3n-v%E1%BB%81-h%C3%A0m-sort-trong-javascript" target="_blank" rel="noopener"></a>Cơ bản về hàm sort() trong JavaScript</h2><p>Trong bài viết <a href="https://completejavascript.com/array-sorting-van-de-muon-thuo" target="_blank" rel="noopener">Array Sorting - vấn đề muôn thuở</a>, mình đã giới thiệu với bạn khá chi tiết về hàm <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank" rel="noopener">sort()</a>, cũng như cách implement một số <a href="https://completejavascript.com/tag/thuat-toan" target="_blank" rel="noopener">thuật toán</a> sắp xếp cơ bản. Bạn có thể đọc bài viết đó để hiểu rõ hơn về chúng.</p>
+<p>Còn bây giờ, mình sẽ nhắc lại hàm sort() một chút cho bạn tiện theo dõi. Vì mình sẽ sử dụng hàm này để sắp xếp Tiếng Việt trong JavaScript.</p>
+<p>Cú pháp cơ bản của hàm sort() với compareFunction:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(compareFunction)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Tham-so"><a href="#Tham-so" class="headerlink" title="Tham số"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#tham-s%E1%BB%91" target="_blank" rel="noopener"></a>Tham số</h3><p>Tham số compareFunction là <a href="https://completejavascript.com/tim-hieu-function-javascript/" target="_blank" rel="noopener">hàm</a> dùng để xác định thứ tự sắp xếp. Nếu bạn bỏ qua tham số này thì mặc định JavaScript sẽ sắp xếp theo thứ tự tăng dần trong bảng mã Unicode (hay đơn giản thì cứ gọi là thứ tự tăng dần bảng chữ cái).</p>
+<h3 id="Gia-tri-tra-ve"><a href="#Gia-tri-tra-ve" class="headerlink" title="Giá trị trả về"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#gi%C3%A1-tr%E1%BB%8B-tr%E1%BA%A3-v%E1%BB%81" target="_blank" rel="noopener"></a>Giá trị trả về</h3><p><a href="https://completejavascript.com/javascript-array-co-ban/" target="_blank" rel="noopener">Mảng</a> đã được sắp xếp (mảng ban đầu có bị thay đổi).</p>
+<p>Ví dụ:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = [<span class="string">'c'</span>, <span class="string">'g'</span>, <span class="string">'w'</span>, <span class="string">'a'</span>];</span><br><span class="line">const b = a.<span class="built_in">sort</span>();</span><br><span class="line">console.<span class="built_in">log</span>(a); // =&gt; [<span class="string">"a"</span>, <span class="string">"c"</span>, <span class="string">"g"</span>, <span class="string">"w"</span>]</span><br><span class="line">console.<span class="built_in">log</span>(b); // =&gt; [<span class="string">"a"</span>, <span class="string">"c"</span>, <span class="string">"g"</span>, <span class="string">"w"</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tim-hieu-compareFunction"><a href="#Tim-hieu-compareFunction" class="headerlink" title="Tìm hiểu compareFunction"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#t%C3%ACm-hi%E1%BB%83u-comparefunction" target="_blank" rel="noopener"></a>Tìm hiểu compareFunction</h3><p>Hàm compareFunction dùng để xác định thứ tự sắp xếp. Giả sử, a và b là hai phần tử dùng để so sánh:</p>
+<ul>
+<li>Nếu compareFunction(a, b) trả về giá trị &lt; 0 thì a sẽ đứng trước b.</li>
+<li>Nếu compareFunction(a, b) trả về giá trị &gt; 0 thì a sẽ đứng sau b.</li>
+<li>Nếu compareFunction(a, b) trả về giá trị bằng 0 thì không sắp xếp (giữ nguyên thứ tự).</li>
+</ul>
+<p>Như vậy là mình đã giúp bạn nhớ lại cơ bản về cách sử dụng hàm sort() trong JavaScript rồi. Tiếp theo, mình bắt đầu áp dụng nó để sắp xếp Tiếng Việt trong JavaScript.</p>
+<h2 id="Sap-xep-Tieng-Viet-trong-JavaScript"><a href="#Sap-xep-Tieng-Viet-trong-JavaScript" class="headerlink" title="Sắp xếp Tiếng Việt trong JavaScript"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#s%E1%BA%AFp-x%E1%BA%BFp-ti%E1%BA%BFng-vi%E1%BB%87t-trong-javascript" target="_blank" rel="noopener"></a>Sắp xếp Tiếng Việt trong JavaScript</h2><h3 id="Dat-bai-toan"><a href="#Dat-bai-toan" class="headerlink" title="Đặt bài toán"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#%C4%90%E1%BA%B7t-b%C3%A0i-to%C3%A1n" target="_blank" rel="noopener"></a>Đặt bài toán</h3><p>Giả sử mình có một mảng string Tiếng Việt là tên một số tỉnh thành tại Việt Nam:</p>
+<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const provinces = [</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">Giang'</span>,</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">Nam'</span>,</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">N</span>ội',</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">T</span>ĩnh',</span><br><span class="line">  <span class="symbol">'H</span>òa <span class="type">B</span>ình',</span><br><span class="line">  <span class="symbol">'H</span>ưng <span class="type">Y</span>ên',</span><br><span class="line">  <span class="symbol">'H</span>ải <span class="type">D</span>ương',</span><br><span class="line">  <span class="symbol">'H</span>ải <span class="type">Ph</span>òng',</span><br><span class="line">  <span class="symbol">'H</span>ậu <span class="type">Giang'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>Mình cần sắp xếp các tên này theo thứ tự tăng dần của bảng chữ cái Tiếng Việt. Kết quả mong muốn thu được là:</p>
+<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const sorted = [</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">Giang'</span>,</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">Nam'</span>,</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">N</span>ội',</span><br><span class="line">  <span class="symbol">'H</span>à <span class="type">T</span>ĩnh',</span><br><span class="line">  <span class="symbol">'H</span>ải <span class="type">D</span>ương',</span><br><span class="line">  <span class="symbol">'H</span>ải <span class="type">Ph</span>òng',</span><br><span class="line">  <span class="symbol">'H</span>ậu <span class="type">Giang'</span>,</span><br><span class="line">  <span class="symbol">'H</span>òa <span class="type">B</span>ình',</span><br><span class="line">  <span class="symbol">'H</span>ưng <span class="type">Y</span>ên'</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sap-xep-Tieng-Viet-bang-ham-sort-thong-thuong"><a href="#Sap-xep-Tieng-Viet-bang-ham-sort-thong-thuong" class="headerlink" title="Sắp xếp Tiếng Việt bằng hàm sort() thông thường"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#s%E1%BA%AFp-x%E1%BA%BFp-ti%E1%BA%BFng-vi%E1%BB%87t-b%E1%BA%B1ng-h%C3%A0m-sort-th%C3%B4ng-th%C6%B0%E1%BB%9Dng" target="_blank" rel="noopener"></a>Sắp xếp Tiếng Việt bằng hàm sort() thông thường</h3><p>Bây giờ, mình thử sắp xếp mảng trên bằng hàm sort() xem sao. Vì mặc định hàm sort() sẽ sắp xếp string theo thứ tự tăng dần nên mình không cần truyền vào compareFunction.</p>
+<p>Do đó, kết quả thu được như sau:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const <span class="literal">result</span> = provinces.sort();</span><br><span class="line">console.<span class="built_in">log</span>(<span class="literal">result</span>);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">[</span><br><span class="line">  <span class="string">"Hà Giang"</span>,</span><br><span class="line">  <span class="string">"Hà Nam"</span>,</span><br><span class="line">  <span class="string">"Hà Nội"</span>,</span><br><span class="line">  <span class="string">"Hà Tĩnh"</span>,</span><br><span class="line">  <span class="string">"Hòa Bình"</span>,</span><br><span class="line">  <span class="string">"Hưng Yên"</span>,</span><br><span class="line">  <span class="string">"Hải Dương"</span>,</span><br><span class="line">  <span class="string">"Hải Phòng"</span>,</span><br><span class="line">  <span class="string">"Hậu Giang"</span></span><br><span class="line">]</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>Bạn thấy đó, kết quả trên là sai so với mong muốn ban đầu. Vậy mình phải làm sao đây?</p>
+<h3 id="Sap-xep-Tieng-Viet-trong-JavaScript-voi-localeCompare"><a href="#Sap-xep-Tieng-Viet-trong-JavaScript-voi-localeCompare" class="headerlink" title="Sắp xếp Tiếng Việt trong JavaScript với localeCompare()"></a><a href="https://completejavascript.com/sap-xep-tieng-viet-javascript#s%E1%BA%AFp-x%E1%BA%BFp-ti%E1%BA%BFng-vi%E1%BB%87t-trong-javascript-v%E1%BB%9Bi-localecompare" target="_blank" rel="noopener"></a>Sắp xếp Tiếng Việt trong JavaScript với localeCompare()</h3><p>Nguyên nhân hàm sort() trên thực hiện sai là vì nó đang thực hiện so sánh string với Tiếng Anh. Do đó, mấu chốt của vấn đề là: làm sao mình có thể so sánh được string với Tiếng Việt để đưa vào hàm sort() mặc định?</p>
+<p>Câu trả lời là: sử dụng hàm localeCompare().</p>
+<p>Nếu cần thì bạn có thể tìm hiểu sâu hơn về hàm <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare" target="_blank" rel="noopener">localeCompare()</a>. Tuy nhiên, trong phạm vi bài viết này, bạn chỉ cần biết rằng: hàm này dùng để so sánh string ở các ngôn ngữ trên thế giới.</p>
+<p>Cú pháp cơ bản của hàm localeCompare() là:</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.locale<span class="constructor">Compare(<span class="params">b</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Có 3 trường hợp xảy ra với kết quả trả về:</p>
+<ul>
+<li>Nếu kết quả trả về &lt; 0 thì a sẽ đứng trước b.</li>
+<li>Nếu kết quả trả về &gt; 0 thì a sẽ đứng sau b.</li>
+<li>Nếu kết quả trả về bằng 0 thì a và b giống nhau.</li>
+</ul>
+<p>Thật là trùng hợp, cách hoạt động của hàm localeCompare() lại hoàn toàn giống với compareFunction bên trên. Vì vậy, mình có thể áp dụng ngay vào để sắp xếp Tiếng Việt như sau:</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="literal">result</span> = provinces.sort((a, b) =&gt; a.localeCompare(b));</span><br><span class="line">console.log(<span class="literal">result</span>);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">[</span><br><span class="line">  <span class="string">"Hà Giang"</span>,</span><br><span class="line">  <span class="string">"Hà Nam"</span>,</span><br><span class="line">  <span class="string">"Hà Nội"</span>,</span><br><span class="line">  <span class="string">"Hà Tĩnh"</span>,</span><br><span class="line">  <span class="string">"Hải Dương"</span>,</span><br><span class="line">  <span class="string">"Hải Phòng"</span>,</span><br><span class="line">  <span class="string">"Hậu Giang"</span>,</span><br><span class="line">  <span class="string">"Hòa Bình"</span>,</span><br><span class="line">  <span class="string">"Hưng Yên"</span></span><br><span class="line">]</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>Nguồn: completejavascript.com</p>
+
+</div>
+
+
+<div class="book-comments">
+  
+<script src="https://utteranc.es/client.js"
+        repo="toandn96/toandn96.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+</div>
+
+
+<script src="/js/book-post.js"></script>
+          </div>
+        </div>
+
+        <div class="column col-2 hide-lg">
+          <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <div class="book-tocbot-menu">
+    <!-- <a class="book-toc-expand" onclick="expand_toc()">Expand all</a> -->
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+// function expand_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 6,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "collapse_toc()");
+//   b.innerHTML = "Collapse all"
+// }
+
+// function collapse_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 2,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "expand_toc()");
+//   b.innerHTML = "Expand all"
+// }
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
