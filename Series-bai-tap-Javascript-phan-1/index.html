@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico" />
+    
+
+    <title>
+        
+          Series luyện tập Javascript phần 1 - Bookmarks của Tỏn Tỏn
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <!-- Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    <!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('img')
+})
+</script>
+ -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="book-container">
+      <div class="columns">
+        <div class="column col-2 hide-lg config-header">
+          <div class="book-sidebar">
+  <div class="book-sidebar-logo">
+    <picture>
+      <a href="/">
+        <img class="img-header" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png" />
+      </a>
+    </picture>
+  </div>
+  <h4 class="site-meta">
+    <a href="/">Tỏn Tỏn</a>
+  </h4>
+  <div class="sidebar-content">
+    
+  </div>
+  <p><a class="github-link" href="https://github.com/toandn96" target="_blank" rel="noopener">Github</a></p>
+  <p style="width: 50%; padding: 20px 20px 0px 20px;">Bookmarks của Tỏn Tỏn</p>
+  <p style="width: 50%; padding: 0 20px 0px 20px;"><i>"Mình thấy hay hay nên lưu lại sau này thích thì coi thôi :))"</i></p>
+  
+</div>
+        </div>
+
+        <div class="column col-8 col-lg-12 config-main">
+          <div class="book-content">
+            <div class="book-navbar-home">
+              <header class="navbar">
+  <section class="navbar-section">
+    <a href="/"><img class="navbar-icon" src="https://raw.githubusercontent.com/toandn96/source/master/doug.png"></a>
+  </section>
+  <section class="navbar-center">
+    <a href="/">Tỏn Tỏn</a>
+  </section>
+  <section class="navbar-section">
+    <!-- <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label> -->
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
+  </div>
+</div>
+            </div>
+            <div class="book-post">
+  
+  <p></p>
+  <h1 style="border: none;">Series luyện tập Javascript phần 1</h1>
+  <h2 id="Example-1-Dao-nguoc-chuoi"><a href="#Example-1-Dao-nguoc-chuoi" class="headerlink" title="Example 1 : Đảo ngược chuỗi"></a>Example 1 : Đảo ngược chuỗi</h2><p>Ex: </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* <span class="string">"Hello World"</span> =&gt; <span class="string">"dlroW olleH"</span></span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>Code:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span><span class="params">(str)</span></span> &#123; </span><br><span class="line">  <span class="keyword">return</span> str.split(<span class="string">""</span>).<span class="built_in">reverse</span>().join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// console.<span class="built_in">log</span>(<span class="built_in">reverse</span>(<span class="string">"Hello World"</span>)) =&gt; <span class="string">"dlroW olleH"</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Example-2-Letter-Changes"><a href="#Example-2-Letter-Changes" class="headerlink" title="Example 2 :  Letter Changes"></a>Example 2 :  Letter Changes</h2><blockquote>
+<p>Thay thế mọi chữ cái trong chuỗi bằng chữ cái theo sau trong bảng chữ cái (nghĩa là c trở thành d, z trở thành a). Sau đó viết hoa mọi nguyên âm (a, e, i, o, u) có trong chuỗi mới và cuối cùng trả về chuỗi đã sửa đổi.</p>
+</blockquote>
+<blockquote>
+<pre><code>Ví dụ:
+&quot;Hello World&quot; =&gt; &quot;Ifmmp xpsmE&quot;
+&quot;Aa&quot; =&gt; &quot;Bb&quot;
+&quot;AabBCC&quot; =&gt; &quot;BbcCDD&quot;</code></pre></blockquote>
+<p>Code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">letterChanges</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/[a-z]/gi</span>, <span class="function"><span class="keyword">function</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (c) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">'z'</span>: <span class="keyword">return</span> <span class="string">'a'</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">'Z'</span>: <span class="keyword">return</span> <span class="string">'A'</span>;</span><br><span class="line">          <span class="keyword">default</span>:  <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(<span class="number">1</span> + c.charCodeAt(<span class="number">0</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).replace(<span class="regexp">/[aeiou]+/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t.toUpperCase();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(reverse("Hello World")) =&gt; "Ifmmp xpsmE"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Example-3-So-sanh"><a href="#Example-3-So-sanh" class="headerlink" title="Example 3 :  So sánh"></a>Example 3 :  So sánh</h2><p>2 đối tượng:  </p>
+<blockquote>
+<p>Xác định xem đối tượng thứ nhất có chứa các giá trị thuộc tính tương đương với đối tượng thứ hai không</p>
+</blockquote>
+<p>Code:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">matches</span> <span class="string">=</span> <span class="string">(obj,</span> <span class="string">source)</span> <span class="string">=&gt;</span></span><br><span class="line">  <span class="string">Object.keys(source).every(key</span> <span class="string">=&gt;</span> <span class="string">obj.hasOwnProperty(key)</span> <span class="string">&amp;&amp;</span> <span class="string">obj[key]</span> <span class="string">===</span> <span class="string">source[key]);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">console.log(matches(&#123;</span> <span class="attr">age:</span> <span class="number">25</span><span class="string">,</span> <span class="attr">hair:</span> <span class="string">'long'</span><span class="string">,</span> <span class="attr">beard:</span> <span class="literal">true</span> <span class="string">&#125;,</span> <span class="string">&#123;</span> <span class="attr">hair:</span> <span class="string">'long'</span><span class="string">,</span> <span class="attr">beard:</span> <span class="literal">true</span> <span class="string">&#125;));</span> <span class="string">//</span> <span class="literal">true</span></span><br><span class="line"><span class="string">console.log(matches(&#123;</span> <span class="attr">hair:</span> <span class="string">'long'</span><span class="string">,</span> <span class="attr">beard:</span> <span class="literal">true</span> <span class="string">&#125;,</span> <span class="string">&#123;</span> <span class="attr">age:</span> <span class="number">25</span><span class="string">,</span> <span class="attr">hair:</span> <span class="string">'long'</span><span class="string">,</span> <span class="attr">beard:</span> <span class="literal">true</span> <span class="string">&#125;));</span> <span class="string">//</span> <span class="literal">false</span></span><br><span class="line"><span class="string">console.log(matches(&#123;</span> <span class="attr">hair:</span> <span class="string">'long'</span><span class="string">,</span> <span class="attr">beard:</span> <span class="literal">true</span> <span class="string">&#125;,</span> <span class="string">&#123;</span> <span class="attr">age:</span> <span class="number">26</span><span class="string">,</span> <span class="attr">hair:</span> <span class="string">'long'</span><span class="string">,</span> <span class="attr">beard:</span> <span class="literal">true</span> <span class="string">&#125;));</span> <span class="string">//</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+</div>
+
+
+<div class="book-comments">
+  
+<script src="https://utteranc.es/client.js"
+        repo="toandn96/toandn96.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+</div>
+
+
+<script src="/js/book-post.js"></script>
+          </div>
+        </div>
+
+        <div class="column col-2 hide-lg">
+          <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <div class="book-tocbot-menu">
+    <!-- <a class="book-toc-expand" onclick="expand_toc()">Expand all</a> -->
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+// function expand_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 6,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "collapse_toc()");
+//   b.innerHTML = "Collapse all"
+// }
+
+// function collapse_toc(){
+//   var b = document.querySelector(".book-toc-expand");
+//   tocbot.init({
+//     tocSelector: '.book-tocbot',
+//     contentSelector: '.book-post',
+//     headingSelector: 'h1, h2, h3, h4, h5',
+//     collapseDepth: 2,
+//     orderedList: false,
+//     scrollSmooth: false,
+//   });
+//   b.setAttribute("onclick", "expand_toc()");
+//   b.innerHTML = "Expand all"
+// }
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
