@@ -11,7 +11,7 @@
 
     <title>
         
-          Bookmarks của Tỏn Tỏn
+          Cập nhập state có thể là bất đồng bộ - Bookmarks của Tỏn Tỏn
         
     </title>
 
@@ -100,54 +100,43 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
             </div>
-            <div class='book-archive'>
-  <!-- Title -->
+            <div class="book-post">
   
-  
+  <p></p>
+  <h1 style="border: none;">Cập nhập state có thể là bất đồng bộ</h1>
+  <p>React có thể gộp nhiều lệnh gọi <code>setState()</code> vào một lần cập nhập để tăng hiệu năng</p>
+<p>Bởi vì <code>this.props</code> và <code>this.state</code> có thể được cập nhập bất đồng bộ, bạn không nên dựa vào giá trị của chúng để tính toán state tiếp theo</p>
+<p>Ví dụ, đoạn mã này có thể thất bại để cập nhập counter:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">  counter: <span class="keyword">this</span>.state.counter + <span class="keyword">this</span>.props.increment,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-  
-  <!-- Split post by year -->
-  
-  
+<p>Để sửa nó, sử dụng một dạng thứ hai của <code>setState()</code> nó nhận một funtion chứ không phải object. Funtion này sẽ nhận state trước đó làm tham số đầu tiên, và props tại thời điểm cập nhập được nhận làm tham số thứ hai:</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Correct</span><br><span class="line">this.<span class="built_in">set</span>State((<span class="keyword">state</span>, props) =&gt; (&#123;</span><br><span class="line">  counter: <span class="keyword">state</span>.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 
-  
-  <div class="book-archive-years">
-    <ul class="archive-list-item">
-      
-      <li>
-        <span class="article-meta">
-          <span class="article-meta-datetime">2019-12-25</span>
-          
-          <span class="article-category">
-            <a class="article-category-link" href="/categories/ReactJS/">ReactJS</a>, <a class="article-category-link" href="/categories/ReactJS/ReactNative/">ReactNative</a>
-          </span>
-          
-        </span>
-        <p class="article-header">
-          <a href="/React-Cap-nhat-State-co-the-bat-dong-bo/">Cập nhập state có thể là bất đồng bộ</a>
-        </p>
-      </li>
-      
-      <li>
-        <span class="article-meta">
-          <span class="article-meta-datetime">2019-12-02</span>
-          
-          <span class="article-category">
-            <a class="article-category-link" href="/categories/ReactJS/">ReactJS</a>, <a class="article-category-link" href="/categories/ReactJS/ReactNative/">ReactNative</a>
-          </span>
-          
-        </span>
-        <p class="article-header">
-          <a href="/Toi-uu-render-Component-React-voi-React-lazyload/">Tối ưu render Component React với React-lazyload</a>
-        </p>
-      </li>
-      
-    </ul>
-  </div>
-  
+<p>Ta đã sử dụng <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">arrow function</a> ở ví dụ trên, nhưng nó vẫn hoạt động với funtion truyền thống:</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Correct</span><br><span class="line">this.<span class="built_in">set</span>State(function(<span class="keyword">state</span>, props) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    counter: <span class="keyword">state</span>.counter + props.increment</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-  
+
 </div>
+
+
+<div class="book-comments">
+  
+<script src="https://utteranc.es/client.js"
+        repo="toandn96/toandn96.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+</div>
+
+
+<script src="/js/book-post.js"></script>
           </div>
         </div>
 
